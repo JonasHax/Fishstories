@@ -1,25 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { Icon } from "leaflet";
+import Fiskekort from './Fiskekort';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fiskekort>
+
+    </Fiskekort>
   );
 }
-
+// cknoea1st54zr17mpn9ijmsm7 - satelit
+// cknoda3mi3phq17pmcl9ctwq8 - street
 export default App;
