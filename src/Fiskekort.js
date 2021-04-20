@@ -37,7 +37,7 @@ const Fiskekort = () => {
 
     return (
         <div>
-            <MapContainer center={[57.053777295262705, 9.902697864384805]} zoom={10} minZoom={8}>
+            <MapContainer center={[57.053777295262705, 9.902697864384805]} zoom={10} minZoom={7}>
                
                <LayersControl position="topright">
                    <LayersControl.BaseLayer checked
