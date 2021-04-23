@@ -2,13 +2,13 @@ import './App.css';
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import Fiskekort from './Fiskekort';
+import { DataInsert } from './DataInsert';
 
 function App() {
 
   return (
-    <Fiskekort>
-
-    </Fiskekort>
+    <Fiskekort />
+    // <DataInsert />
   );
 }
 // cknoea1st54zr17mpn9ijmsm7 - satelit
