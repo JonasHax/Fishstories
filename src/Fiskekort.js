@@ -4,27 +4,10 @@ import { Icon, LayerGroup, Tooltip } from "leaflet";
 import './Fiskekort.css';
 import L from 'leaflet';
 
-
-const Fiskekort = () => {
-    // const [state, setstate] = useState("cknoda3mi3phq17pmcl9ctwq8");
-    // const handleStyleChange = () => {
-    //     setstate("cknoea1st54zr17mpn9ijmsm7");
-    // }
-
+const Fiskekort = (props) => {
     // Data
-    const data = require('./data.json');
-    const positions = [
-        {
-            title: "Sheeeeesh",
-            location: [57.049251,9.941234],
-            id: 1
-        },
-        {
-            title: "Shuuuush",
-            location: [57.053187,9.866103],
-            id: 2
-        },
-    ]
+    // const data = require('./data.json');
+    const fishingSpots = props.fishingSpots;
 
     // Marker Icon - skal ud i eget @ some point
     const icon = L.icon({ 
@@ -57,10 +40,10 @@ const Fiskekort = () => {
                </LayersControl>
 
                  {/* Markers */}
-               {data.map((spot) => {         
+               {fishingSpots.map((spot) => {
                 return (
                 <Marker 
-                    position={[spot.gps[0].lat, spot.gps[0].long]}
+                    position={[spot.gps.lat, spot.gps.lng]}
                     key={spot.id}
                     icon={icon}
                     >

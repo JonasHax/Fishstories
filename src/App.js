@@ -3,11 +3,13 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 import Fiskekort from './Fiskekort';
 import { DataInsert } from './DataInsert';
+import { FiskekortAPIHandler } from './FiskekortAPIHandler';
 
 function App() {
 
   return (
-    <Fiskekort />
+    // <Fiskekort />
+    <FiskekortAPIHandler></FiskekortAPIHandler>
     // <DataInsert />
   );
 }
