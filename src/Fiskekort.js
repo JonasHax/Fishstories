@@ -3,6 +3,7 @@ import { LayersControl, MapContainer, Marker, Popup, TileLayer } from "react-lea
 import { heatLayer, Icon, LayerGroup, Tooltip } from "leaflet";
 import './Fiskekort.css';
 import L from 'leaflet';
+import { CatchReportView } from './CatchReportComponent/CatchReportView';
 
 const Fiskekort = (props) => {
     // Data
@@ -55,18 +56,15 @@ const Fiskekort = (props) => {
                 </Marker>) 
                 })}
 
+                {/* Catches */}
                 {catchReports.map((report) => {
                 return (
                 <Marker
                     position={[report.gps.lat, report.gps.lng]}
                     key={report.id}
                     >
-                    <Popup>
-                        {report.description}
-                        <br></br>
-                        {report.fishType}
-                        <br></br>
-                        {report.image}
+                    <Popup className="CatchReportPopup">
+                        <CatchReportView catchReport={report}></CatchReportView>
                     </Popup>
                 </Marker>)
                 })}

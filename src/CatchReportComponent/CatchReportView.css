@@ -1,0 +1,22 @@
+.Container {
+  position: relative;
+  background-color: black;
+  height: 90vh;
+  width: 50vh;
+  background-image: url("https://pbs.twimg.com/media/CoFG26CUsAAeluU.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-repeat: cover; */
+}
+
+.TopBar {
+  /* position: absolute; */
+  /* top: 0; */
+  /* padding-top: 50px; */
+  /* padding-top: 1vh; */
+  /* z-index: 1; */
+}
+
+.BottomBar {
+}

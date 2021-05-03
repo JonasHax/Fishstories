@@ -4,12 +4,14 @@ import { Icon } from "leaflet";
 import Fiskekort from './Fiskekort';
 import { DataInsert } from './DataInsert';
 import { FiskekortAPIHandler } from './FiskekortAPIHandler';
+import { CatchReportView } from './CatchReportComponent/CatchReportView';
 
 function App() {
 
   return (
     // <Fiskekort />
     <FiskekortAPIHandler></FiskekortAPIHandler>
+    // <CatchReportView></CatchReportView>
     // <DataInsert />
   );
 }
