@@ -1,12 +1,11 @@
 import React, { useState, updateState } from 'react'
 import { LayersControl, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { Icon, LayerGroup, Tooltip } from "leaflet";
+import { heatLayer, Icon, LayerGroup, Tooltip } from "leaflet";
 import './Fiskekort.css';
 import L from 'leaflet';
 
 const Fiskekort = (props) => {
     // Data
-    // const data = require('./data.json');
     const fishingSpots = props.fishingSpots;
     const catchReports = props.catchReports;
 
