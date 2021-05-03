@@ -22,6 +22,7 @@ const Fiskekort = (props) => {
         <div>
             <MapContainer center={[57.053777295262705, 9.902697864384805]} zoom={10} minZoom={7}>
                
+               <button> GU GI GING GANG</button>
                <LayersControl position="topright">
                    <LayersControl.BaseLayer checked
                    name="Streetview">

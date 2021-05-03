@@ -1,0 +1,18 @@
+.add-button {
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border-radius: 5em;
+  border: 0;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  color: white;
+  background-color: #1ea7fd;
+}
+
+.add-img {
+  height: 33px;
+  width: 26px;
+  margin-top: 3px;
+  pointer-events: none;
+}
