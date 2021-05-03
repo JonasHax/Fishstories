@@ -8,6 +8,7 @@ const Fiskekort = (props) => {
     // Data
     // const data = require('./data.json');
     const fishingSpots = props.fishingSpots;
+    const catchReports = props.catchReports;
 
     // Marker Icon - skal ud i eget @ some point
     const icon = L.icon({ 
@@ -53,6 +54,22 @@ const Fiskekort = (props) => {
                         {spot.description}
                     </Popup>
                 </Marker>) 
+                })}
+
+                {catchReports.map((report) => {
+                return (
+                <Marker
+                    position={[report.gps.lat, report.gps.lng]}
+                    key={report.id}
+                    >
+                    <Popup>
+                        {report.description}
+                        <br></br>
+                        {report.fishType}
+                        <br></br>
+                        {report.image}
+                    </Popup>
+                </Marker>)
                 })}
 
              </MapContainer>
