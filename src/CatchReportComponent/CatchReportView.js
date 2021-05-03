@@ -7,7 +7,7 @@ export const CatchReportView = (props) => {
     return (
         <div className="Container">
             <TopBar className="TopBar"
-                location="Hvidesande Fiskepark"
+                location={props.catchReport.location}
             ></TopBar>
             <BottomBar className="BottomBar"
                 fishType={props.catchReport.fishType}
