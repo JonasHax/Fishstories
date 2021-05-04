@@ -1,11 +1,10 @@
 import React from 'react'
 import "./BottomBar.css";
-import FishType from "../images/fish.png";
-import Weight from "../images/weight.png";
-import Ruler from "../images/ruler.png";
+import FishType from "../../images/fish.png";
+import Weight from "../../images/weight.png";
+import Ruler from "../../images/ruler.png";
 
 export const BottomBar = (props) => {
-    console.log(props.description);
     return (
         <div className="BottomBarContainer">
             <div className="FishType">

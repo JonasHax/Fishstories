@@ -1,7 +1,7 @@
 import React from 'react'
 import './TopBar.css';
-import Location from "../images/location.png";
-import Close from '../images/cancel.png';
+import Location from "../../images/location.png";
+import Close from '../../images/cancel.png';
 
 export const TopBar = (props) => {
     return (

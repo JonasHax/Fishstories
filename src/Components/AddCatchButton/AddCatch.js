@@ -1,6 +1,6 @@
 import React from 'react';
 import './AddCatch.css';
-import logo from '../images/fishAdd.png'
+import logo from '../../images/fishAdd.png';
 
 export const Button = () => {
 

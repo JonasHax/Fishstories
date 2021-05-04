@@ -3,7 +3,7 @@ import { LayersControl, MapContainer, Marker, Popup, TileLayer } from "react-lea
 import { heatLayer, Icon, LayerGroup, Tooltip } from "leaflet";
 import './Fiskekort.css';
 import L from 'leaflet';
-import { CatchReportView } from './CatchReportComponent/CatchReportView';
+import { CatchReportView } from '../CatchReport/CatchReportView';
 
 const Fiskekort = (props) => {
     // Data
@@ -12,9 +12,9 @@ const Fiskekort = (props) => {
 
     // Marker Icon - skal ud i eget @ some point
     const icon = L.icon({ 
-        iconUrl: require("./images/smoll.png").default,
+        iconUrl: require("../../images/smoll.png").default,
         iconSize: [26, 45],
-        iconRetinaUrl: require("./images/smoll.png").default,
+        iconRetinaUrl: require("../../images/smoll.png").default,
         iconAnchor: [13, 44],
         popupAnchor: [0, -45],
     });
@@ -22,8 +22,6 @@ const Fiskekort = (props) => {
     return (
         <div>
             <MapContainer center={[57.053777295262705, 9.902697864384805]} zoom={10} minZoom={7}>
-               
-               <button> GU GI GING GANG</button>
                <LayersControl position="topright">
                    <LayersControl.BaseLayer checked
                    name="Streetview">

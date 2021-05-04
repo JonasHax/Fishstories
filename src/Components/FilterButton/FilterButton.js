@@ -1,8 +1,6 @@
 import React from 'react';
 import './FilterButton.css';
-import havørrede from '../images/havørred.png'
-
-
+import havørrede from '../../images/havørred.png'
 
 export const Button = ({image}) => {
 
@@ -11,7 +9,6 @@ export const Button = ({image}) => {
   function handleClick() {
     alert(image)
     }
-
 
     // const imagepath = require(image)
 
