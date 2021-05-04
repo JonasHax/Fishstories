@@ -1,0 +1,39 @@
+.TopBarContainer {
+  padding-top: 15px;
+  padding-left: 10px;
+  font-size: x-large;
+}
+
+.Location {
+  background-color: white;
+  color: blue;
+  border-radius: 25px;
+  display: inline;
+  padding: 0.3vh 1vh;
+}
+
+.Exit {
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border-radius: 25px;
+  display: inline;
+  padding: 0.3vh 1vh;
+}
+
+.LocationIcon {
+  height: 20px;
+}
+
+.DropShadow {
+  filter: drop-shadow(10px 10px 4px #0000007e);
+}
+
+.ExitButton {
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+  height: 35px;
+  filter: invert(100%);
+}
