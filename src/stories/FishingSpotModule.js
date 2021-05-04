@@ -1,6 +1,7 @@
 import React from 'react';
 import './FishingSpotModule.css';
 import {FishType} from './FishType';
+import {Location} from './FishingLocation'
 
 export const Menu = () => {
 
@@ -9,7 +10,7 @@ export const Menu = () => {
         <div className={"Darken-BG"}>
             <div  className={"FishingSpot-Module"}>
                 <div className={"FishingSpot-CoverImage"}>
-                    <div className={"FishingSpot-Location"}>🚩 Hvidesande Fiskeanstalt</div>
+                    <Location text={"Hvidesande Fiskeanstalt"}></Location>
                     <div className={"FishingSpot-StoryButton"}>🐟</div>
                     <div className={"FishingSpot-CloseButton"}>❌</div>
                     <img className={"FishingSpot-Image"} src="https://i.imgur.com/jTzHTWU.png"></img>

@@ -1,0 +1,28 @@
+.Location {
+  bottom: 6px;
+  left: 6px;
+  padding: 10px;
+
+  font-size: 3mm;
+  position: absolute;
+  border-radius: 0.3em;
+  z-index: 2;
+
+  color: rgba(88, 101, 216, 1);
+  background-color: white;
+
+  transition-property: transform, box-shadow;
+  transition-duration: 0.2s;
+
+  /* make text not selecteable */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.Location:active {
+  color: white;
+  background-color: rgba(88, 101, 216, 1);
+  transform: scale(0.98);
+}
