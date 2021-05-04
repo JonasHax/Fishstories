@@ -1,13 +1,14 @@
 import React, { useState, updateState } from 'react'
 import { LayersControl, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { Icon, LayerGroup, Tooltip } from "leaflet";
+import { heatLayer, Icon, LayerGroup, Tooltip } from "leaflet";
 import './Fiskekort.css';
 import L from 'leaflet';
+import { CatchReportView } from './CatchReportComponent/CatchReportView';
 
 const Fiskekort = (props) => {
     // Data
-    // const data = require('./data.json');
     const fishingSpots = props.fishingSpots;
+    const catchReports = props.catchReports;
 
     // Marker Icon - skal ud i eget @ some point
     const icon = L.icon({ 
@@ -54,6 +55,19 @@ const Fiskekort = (props) => {
                         {spot.description}
                     </Popup>
                 </Marker>) 
+                })}
+
+                {/* Catches */}
+                {catchReports.map((report) => {
+                return (
+                <Marker
+                    position={[report.gps.lat, report.gps.lng]}
+                    key={report.id}
+                    >
+                    <Popup className="CatchReportPopup">
+                        <CatchReportView catchReport={report}></CatchReportView>
+                    </Popup>
+                </Marker>)
                 })}
 
              </MapContainer>
