@@ -19,6 +19,14 @@ const Fiskekort = (props) => {
         popupAnchor: [0, -45],
     });
 
+    const catchReportIcon = L.icon({
+        iconUrl: require("../../images/catchReportIcon.png").default,
+        iconSize: [35, 35],
+        iconRetinaUrl: require("../../images/catchReportIcon.png").default,
+        iconAnchor: [17, 35],
+        popupAnchor: [-5, -35],
+    });
+
     return (
         <div>
             <MapContainer center={[57.053777295262705, 9.902697864384805]} zoom={10} minZoom={7}>
@@ -61,6 +69,7 @@ const Fiskekort = (props) => {
                 <Marker
                     position={[report.gps.lat, report.gps.lng]}
                     key={report.id}
+                    icon={catchReportIcon}
                     >
                     <Popup className="CatchReportPopup">
                         <CatchReportView catchReport={report}></CatchReportView>
