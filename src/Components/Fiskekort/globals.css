@@ -1,0 +1,9 @@
+.leaflet-popup-content {
+  width: auto !important;
+  min-width: 250px;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background-color: black;
+}
