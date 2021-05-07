@@ -78,7 +78,9 @@ const Fiskekort = (props) => {
 
           >
            <Popup>
-            <FishingSpotModule></FishingSpotModule>
+            <FishingSpotModule>
+              
+            </FishingSpotModule>
 
            </Popup>
           </Marker>
