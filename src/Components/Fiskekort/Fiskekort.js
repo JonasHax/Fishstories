@@ -1,4 +1,5 @@
 import React from "react";
+import { FishingSpotModule } from "../FishingSpot/FishingSpotModule";
 import {
   LayersControl,
   MapContainer,
@@ -33,6 +34,12 @@ const Fiskekort = (props) => {
     popupAnchor: [-5, -35],
   });
 
+  const openFishModule = () => { 
+    
+    return <FishingSpotModule/>
+
+  }
+
   return (
     <MapContainer
       className={css.MapCont}
@@ -58,16 +65,22 @@ const Fiskekort = (props) => {
       {/* Markers */}
       {fishingSpots.map((spot) => {
         return (
-          <Marker
+          <Marker 
             position={[spot.gps.lat, spot.gps.lng]}
             key={spot.id}
             icon={icon}
+            // eventHandlers={{
+            //   click: () => {
+                
+            //     return <FishingSpotModule/>
+            //   },
+            // }}
+
           >
-            <Popup>
-              {spot.name}
-              <br></br>
-              {spot.description}
-            </Popup>
+           <Popup>
+            <FishingSpotModule></FishingSpotModule>
+
+           </Popup>
           </Marker>
         );
       })}

@@ -4,7 +4,7 @@ import {FishType} from './FishType';
 import {Location} from './FishingLocation'
 import {PopUp} from '../PopUpModule/PopUpModule'
 
-export const Menu = () => {
+export const FishingSpotModule = () => {
 
 
   return (
