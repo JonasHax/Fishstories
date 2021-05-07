@@ -26,6 +26,7 @@ option {
 .TextField {
   font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
+  font-size: 3mm;
   width: 93%;
   height: 100px;
 
@@ -33,7 +34,7 @@ option {
   font-size: 3mm;
   display: block;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 5px;
   border: 2px solid #d1d1d1;
   resize: none;
@@ -41,7 +42,7 @@ option {
 
 .AddPhoto {
   width: 93%;
-  height: 180px;
+  height: 140px;
 
   border-radius: 0.5em;
   font-size: 3mm;
@@ -54,11 +55,11 @@ option {
 
 .AddPhotoImage {
   width: 30%;
-  height: 45%;
+  height: 55%;
 
   display: block;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 35px;
 }
 
 .LocationButton {
@@ -102,6 +103,12 @@ option {
   margin-top: 5px;
 }
 
+.LabelText {
+  margin-left: 5px;
+  font-size: 4mm;
+  color: #9b9b9b;
+}
+
 .ButtonContainer {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -109,11 +116,37 @@ option {
   margin: 10px;
 }
 
+.SpinnerContainer {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  column-gap: 20%;
+
+  margin: 10px;
+  margin-top: 20px;
+}
+
+.Spinner {
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  border-radius: 0.5em;
+  width: 40px;
+
+  margin: auto;
+  padding: 5px;
+  border: 2px solid #d1d1d1;
+}
+
 .AnimatedButton {
   transition-property: transform, box-shadow;
   transition-duration: 0.2s;
   cursor: pointer;
+}
 
+.AnimatedButton:active {
+  transform: scale(0.96);
+}
+
+.NonSelectable {
   /* make text not selecteable */
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -121,6 +154,6 @@ option {
   user-select: none; /* Standard */
 }
 
-.AnimatedButton:active {
-  transform: scale(0.96);
+.AutoMargin {
+  margin: auto;
 }
