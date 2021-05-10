@@ -9,7 +9,9 @@ import {
 import css from "./Fiskekort.module.css";
 import "./globals.css";
 import L from "leaflet";
+import { AddCatchButton } from "../AddCatchButton/AddCatch"
 import { CatchReportView } from "../CatchReport/CatchReportView";
+import { FilterMenu } from "../FilterButton/FilterMenu"
 
 const Fiskekort = (props) => {
   // Data
@@ -40,6 +42,8 @@ const Fiskekort = (props) => {
       zoom={10}
       minZoom={7}
     >
+      <FilterMenu></FilterMenu>
+      <AddCatchButton></AddCatchButton>
       <LayersControl position="topright">
         <LayersControl.BaseLayer checked name="Streetview">
           <TileLayer
