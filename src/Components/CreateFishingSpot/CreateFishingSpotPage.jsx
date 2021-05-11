@@ -32,7 +32,7 @@ export const CreateFishingSpotPage = () => {
   const [type, setType] = useState("");
   const [possibleCatches, setPossibleCatches] = useState([]);
 
-  const fishTypes = require("./fishTypes.json");
+  const fishTypes = require("../../Data/fishTypes.json");
 
   const eventHandlers = useMemo(
     () => ({
@@ -138,6 +138,7 @@ export const CreateFishingSpotPage = () => {
             <MenuItem value={"Kyst"}>Kyst</MenuItem>
             <MenuItem value={"Sø"}>Sø</MenuItem>
             <MenuItem value={"Å"}>Å</MenuItem>
+            <MenuItem value={"P&T"}>P&T</MenuItem>
           </Select>
         </FormControl>
         <button className={css.grimKnap} onClick={handleClick}>
