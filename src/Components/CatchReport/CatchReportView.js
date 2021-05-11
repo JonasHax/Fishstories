@@ -6,7 +6,7 @@ import { TopBar } from "./TopBar";
 
 export const CatchReportView = (props) => {
   return (
-    <PopUp>
+    <PopUp onClose={props.onClose}>
       <div className={css.Container}>
         <TopBar
           className={css.TopBar}

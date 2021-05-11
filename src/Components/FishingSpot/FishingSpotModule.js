@@ -7,7 +7,7 @@ import { PopUp } from "../PopUpModule/PopUpModule";
 export const FishingSpotModule = (props) => {
   const fishingSpot = props.chosenSpot;
   return (
-    <PopUp>
+    <PopUp onClose={props.onClose}>
       <div className={"FishingSpot-CoverImage"}>
         <Location location={fishingSpot.name}></Location>
         <div className={"FishingSpot-StoryButton"}>🐟</div>

@@ -3,7 +3,7 @@ import "./AddCatchReportModule.css";
 import { PopUp } from "../PopUpModule/PopUpModule";
 import AddPhoto from "../../images/addphoto.png";
 
-export const AddCatchReportModule = () => {
+export const AddCatchReportModule = (props) => {
   function handlePhotoClick() {
     alert("add photo");
   }
@@ -21,7 +21,7 @@ export const AddCatchReportModule = () => {
   }
 
   return (
-    <PopUp>
+    <PopUp onClose={props.onClose}>
       <select className={"DropDown"}>
         <option>Havørrede</option>
         <option>Krokodille</option>

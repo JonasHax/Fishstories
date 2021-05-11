@@ -115,7 +115,10 @@ const Fiskekort = (props) => {
           open={fishingSpotModalOpen}
           onClose={handleFishingSpotModalClose}
         >
-          <FishingSpotModule chosenSpot={currentSpot} />
+          <FishingSpotModule
+            chosenSpot={currentSpot}
+            onClose={handleFishingSpotModalClose}
+          />
         </Modal>
 
         {/* Reports */}
@@ -123,12 +126,17 @@ const Fiskekort = (props) => {
           open={catchReportModalOpen}
           onClose={handleCatchReportModalClose}
         >
-          <CatchReportView catchReport={currentReport}></CatchReportView>
+          <CatchReportView
+            catchReport={currentReport}
+            onClose={handleCatchReportModalClose}
+          ></CatchReportView>
         </Modal>
 
         {/* Add Catch */}
         <Modal open={addCatchModalOpen} onClose={handleAddCatchModalClose}>
-          <AddCatchReportModule></AddCatchReportModule>
+          <AddCatchReportModule
+            onClose={handleAddCatchModalClose}
+          ></AddCatchReportModule>
         </Modal>
       </MapContainer>
     </div>

@@ -13,7 +13,9 @@ export const PopUp = (props) => {
     <Card className={"Module"}>
       <CardContent>
         <div>
-          <div className={"FishingSpot-CloseButton"}>❌</div>
+          <div className={"FishingSpot-CloseButton"} onClick={props.onClose}>
+            ❌
+          </div>
           {props.children}
         </div>
       </CardContent>
