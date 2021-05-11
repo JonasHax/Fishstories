@@ -70,12 +70,20 @@ export const CreateFishingSpotPage = () => {
   }
 
   const handleClick = () => {
-    console.log(position.lat + " - " + position.lng);
-    console.log(title);
-    console.log(description);
-    console.log(type);
-    console.log(possibleCatches);
+    // console.log(position.lat + " - " + position.lng);
+    // console.log(title);
+    // console.log(description);
+    // console.log(type);
+    // console.log(possibleCatches);
     sendToApi();
+    clearStuff();
+  };
+
+  const clearStuff = () => {
+    setTitle("");
+    setDescription("");
+    setType("");
+    setPossibleCatches([]);
   };
 
   const handleTitleChange = (event) => {
