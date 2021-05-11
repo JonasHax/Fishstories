@@ -1,6 +1,6 @@
 import React from "react";
-import "./FishingLocation.css";
+import css from "./FishingLocation.module.css";
 
 export const Location = (props) => {
-  return <div className={"Location"}>🚩 {props.location}</div>;
+  return <div className={css.Location}>🚩 {props.location}</div>;
 };
