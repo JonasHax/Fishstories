@@ -12,6 +12,8 @@ import "./globals.css";
 import L from "leaflet";
 import { CatchReportView } from "../CatchReport/CatchReportView";
 import { Modal } from "@material-ui/core";
+import { FilterMenu } from "../FilterButton/FilterMenu";
+import { AddCatchButton } from "../AddCatchButton/AddCatch";
 
 const Fiskekort = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,6 +50,8 @@ const Fiskekort = (props) => {
         zoom={10}
         minZoom={7}
       >
+        <FilterMenu></FilterMenu>
+        <AddCatchButton></AddCatchButton>
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Streetview">
             <TileLayer
