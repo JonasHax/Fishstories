@@ -13,8 +13,8 @@ export const Button = ({image}) => {
     // const imagepath = require(image)
 
   return (
-    <button className={'filter-button'} onClick={handleClick}>
-          <img className={'filter-img'}src = {image} alt=''/>
+    <button className={'filter-button AnimatedButton'} onClick={handleClick}>
+          <img className={'filter-img '}src = {image} alt=''/>
     </button>
   );
 };
