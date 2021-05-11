@@ -14,18 +14,14 @@
   background-color: white;
 }
 
-.Darken-BG {
+.Darken_BG {
   background-color: rgba(0, 0, 0, 0.37);
   width: 100%;
   height: 100%;
   position: absolute;
 }
 
-.MuiCardContent-root {
-  padding: 0px !important;
-}
-
-.FishingSpot-CloseButton {
+.FishingSpot_CloseButton {
   top: 6px;
   right: 6px;
   padding: 10px;
@@ -49,6 +45,6 @@
   user-select: none; /* Standard */
 }
 
-.FishingSpot-CloseButton:active {
+.FishingSpot_CloseButton:active {
   transform: scale(0.96);
 }

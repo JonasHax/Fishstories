@@ -1,18 +1,18 @@
-.FishingSpot-CoverImage {
+.FishingSpot_CoverImage {
   width: 100%;
   height: 280px;
 
   position: relative;
 }
 
-.FishingSpot-Image {
+.FishingSpot_Image {
   width: 100%;
   height: 100%;
 
   position: relative;
 }
 
-.FishingSpot-StoryButton {
+.FishingSpot_StoryButton {
   bottom: 6px;
   right: 6px;
   padding: 10px;
@@ -35,7 +35,7 @@
   user-select: none; /* Standard */
 }
 
-.FishingSpot-TextField {
+.FishingSpot_TextField {
   width: 93%;
 
   border-radius: 0.5em;
@@ -50,13 +50,13 @@
   background-color: rgb(216, 216, 216);
 }
 
-.Darken-BG {
+.Darken_BG {
   background-color: rgba(0, 0, 0, 0.37);
   width: 100%;
   height: 100%;
   position: absolute;
 }
 
-.FishingSpot-StoryButton:active {
+.FishingSpot_StoryButton:active {
   transform: scale(0.96);
 }
