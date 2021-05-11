@@ -1,47 +1,45 @@
-import React, { useEffect, useState }  from 'react'
-import Fiskekort from './Fiskekort';
+import React, { useEffect, useState } from "react";
+import Fiskekort from "./Fiskekort";
 
 export const FiskekortAPIHandler = () => {
-    const [spots, setSpots] = useState([]);
-    const [spotsFetched, setSpotsFetched] = useState(false);
+  const [spots, setSpots] = useState([]);
+  const [spotsFetched, setSpotsFetched] = useState(false);
 
-    const [reports, setReports] = useState([]);
-    const [reportsFetched, setReportsFetched] = useState(false);
-    
-    useEffect(() =>{
-        async function fetchFishingSpots() {
-            await fetch('https://localhost:5001/api/FishingSpot')
-            .then(res => res.json())
-            .then(spot => {
-                setSpots(spot)
-                setSpotsFetched(true)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        }
+  const [reports, setReports] = useState([]);
+  const [reportsFetched, setReportsFetched] = useState(false);
 
-        async function fetchCatchReports() {
-            await fetch('https://localhost:5001/api/CatchReport')
-            .then(res => res.json())
-            .then(reports => {
-                setReports(reports)
-                setReportsFetched(true)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        }
+  useEffect(() => {
+    async function fetchFishingSpots() {
+      await fetch("https://localhost:5001/api/FishingSpot")
+        .then((res) => res.json())
+        .then((spot) => {
+          setSpots(spot);
+          setSpotsFetched(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
 
-        if(!spotsFetched){
-            fetchFishingSpots()
-        }
-        if(!reportsFetched){
-            fetchCatchReports()
-        }
-    })
+    async function fetchCatchReports() {
+      await fetch("https://localhost:5001/api/CatchReport")
+        .then((res) => res.json())
+        .then((reports) => {
+          setReports(reports);
+          setReportsFetched(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
 
-    return (
-        <Fiskekort fishingSpots={spots} catchReports={reports}></Fiskekort>
-    )
-}
+    if (!spotsFetched) {
+      fetchFishingSpots();
+    }
+    if (!reportsFetched) {
+      fetchCatchReports();
+    }
+  });
+
+  return <Fiskekort fishingSpots={spots} catchReports={reports}></Fiskekort>;
+};

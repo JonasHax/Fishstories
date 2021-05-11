@@ -1,11 +1,6 @@
-import React from 'react';
-import './FishingLocation.css';
+import React from "react";
+import "./FishingLocation.css";
 
-export const Location = ({text}) => {
-
-  return (
-    <div className={"Location"}>🚩 {text}</div>
-  );
-  };
-  
-
+export const Location = (props) => {
+  return <div className={"Location"}>🚩 {props.location}</div>;
+};
