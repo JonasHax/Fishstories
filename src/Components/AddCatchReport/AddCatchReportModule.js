@@ -60,7 +60,11 @@ export const AddCatchReportModule = () => {
         </div>
       </div>
 
-      <textarea className={"TextField"}></textarea>
+      <textarea
+        className={"TextField"}
+        type="text"
+        defaultValue={""}
+      ></textarea>
 
       <div className={"AddPhoto NonSelectable"} onClick={handlePhotoClick}>
         <img
