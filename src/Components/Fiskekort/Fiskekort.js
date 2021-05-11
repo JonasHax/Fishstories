@@ -8,6 +8,7 @@ import { CatchReportView } from "../CatchReport/CatchReportView";
 import { Modal } from "@material-ui/core";
 import { FilterMenu } from "../FilterButton/FilterMenu";
 import { AddCatchButton } from "../AddCatchButton/AddCatch";
+import { AddCatchReportModule } from "../AddCatchReport/AddCatchReportModule";
 
 const Fiskekort = (props) => {
   const [fishingSpotModalOpen, setFishingSpotModalOpen] = useState(false);
@@ -18,6 +19,9 @@ const Fiskekort = (props) => {
   const [currentReport, setCurrentReport] = useState([]);
   const handleCatchReportModalClose = () => setCatchReportModalOpen(false);
   const handleCatchReportModalShow = () => setCatchReportModalOpen(true);
+  const [addCatchModalOpen, setAddCatchModalOpen] = useState(false);
+  const handleAddCatchModalClose = () => setAddCatchModalOpen(false);
+  const handleAddCatchModalShow = () => setAddCatchModalOpen(true);
 
   // Data
   const fishingSpots = props.fishingSpots;
@@ -48,8 +52,14 @@ const Fiskekort = (props) => {
         zoom={10}
         minZoom={7}
       >
-        <FilterMenu></FilterMenu>
-        <AddCatchButton></AddCatchButton>
+        <FilterMenu />
+        <div
+          onClick={() => {
+            handleAddCatchModalShow();
+          }}
+        >
+          <AddCatchButton />
+        </div>
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Streetview">
             <TileLayer
@@ -114,6 +124,11 @@ const Fiskekort = (props) => {
           onClose={handleCatchReportModalClose}
         >
           <CatchReportView catchReport={currentReport}></CatchReportView>
+        </Modal>
+
+        {/* Add Catch */}
+        <Modal open={addCatchModalOpen} onClose={handleAddCatchModalClose}>
+          <AddCatchReportModule></AddCatchReportModule>
         </Modal>
       </MapContainer>
     </div>
