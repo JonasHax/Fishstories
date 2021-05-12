@@ -1,4 +1,9 @@
-.add-button {
+.Container {
+  width: 100%;
+  height: 100%;
+}
+
+.add_button {
   font-weight: 700;
   border-radius: 5em;
   cursor: pointer;
@@ -18,7 +23,7 @@
   border: 2px solid #1b6999;
 }
 
-.add-img {
+.add_img {
   height: 33px;
   width: 26px;
   margin-top: 3px;

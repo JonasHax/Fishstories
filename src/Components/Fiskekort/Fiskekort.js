@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FishingSpotModule } from "../FishingSpot/FishingSpotModule";
-import {
-  LayersControl,
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-} from "react-leaflet";
+import { LayersControl, MapContainer, Marker, TileLayer } from "react-leaflet";
 import css from "./Fiskekort.module.css";
 import "./globals.css";
 import L from "leaflet";
@@ -14,12 +8,20 @@ import { CatchReportView } from "../CatchReport/CatchReportView";
 import { Modal } from "@material-ui/core";
 import { FilterMenu } from "../FilterButton/FilterMenu";
 import { AddCatchButton } from "../AddCatchButton/AddCatch";
+import { AddCatchReportModule } from "../AddCatchReport/AddCatchReportModule";
 
 const Fiskekort = (props) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [fishingSpotModalOpen, setFishingSpotModalOpen] = useState(false);
   const [currentSpot, setCurrentSpot] = useState([]);
-  const handleClose = () => setModalOpen(false);
-  const handleShow = () => setModalOpen(true);
+  const handleFishingSpotModalClose = () => setFishingSpotModalOpen(false);
+  const handleFishingSpotModalShow = () => setFishingSpotModalOpen(true);
+  const [catchReportModalOpen, setCatchReportModalOpen] = useState(false);
+  const [currentReport, setCurrentReport] = useState([]);
+  const handleCatchReportModalClose = () => setCatchReportModalOpen(false);
+  const handleCatchReportModalShow = () => setCatchReportModalOpen(true);
+  const [addCatchModalOpen, setAddCatchModalOpen] = useState(false);
+  const handleAddCatchModalClose = () => setAddCatchModalOpen(false);
+  const handleAddCatchModalShow = () => setAddCatchModalOpen(true);
 
   // Data
   const fishingSpots = props.fishingSpots;
@@ -50,8 +52,14 @@ const Fiskekort = (props) => {
         zoom={10}
         minZoom={7}
       >
-        <FilterMenu></FilterMenu>
-        <AddCatchButton></AddCatchButton>
+        <FilterMenu />
+        <div
+          onClick={() => {
+            handleAddCatchModalShow();
+          }}
+        >
+          <AddCatchButton />
+        </div>
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Streetview">
             <TileLayer
@@ -77,7 +85,7 @@ const Fiskekort = (props) => {
               eventHandlers={{
                 click: () => {
                   setCurrentSpot(spot);
-                  handleShow();
+                  handleFishingSpotModalShow();
                 },
               }}
             ></Marker>
@@ -91,16 +99,44 @@ const Fiskekort = (props) => {
               position={[report.gps.lat, report.gps.lng]}
               key={report.id}
               icon={catchReportIcon}
-            >
-              <Popup className={css.CatchReportPopup}>
-                <CatchReportView catchReport={report}></CatchReportView>
-              </Popup>
-            </Marker>
+              eventHandlers={{
+                click: () => {
+                  setCurrentReport(report);
+                  handleCatchReportModalShow();
+                },
+              }}
+            ></Marker>
           );
         })}
 
-        <Modal open={modalOpen} onClose={handleClose}>
-          <FishingSpotModule chosenSpot={currentSpot} />
+        {/* Modals */}
+        {/* Spots */}
+        <Modal
+          open={fishingSpotModalOpen}
+          onClose={handleFishingSpotModalClose}
+        >
+          <FishingSpotModule
+            chosenSpot={currentSpot}
+            onClose={handleFishingSpotModalClose}
+          />
+        </Modal>
+
+        {/* Reports */}
+        <Modal
+          open={catchReportModalOpen}
+          onClose={handleCatchReportModalClose}
+        >
+          <CatchReportView
+            catchReport={currentReport}
+            onClose={handleCatchReportModalClose}
+          ></CatchReportView>
+        </Modal>
+
+        {/* Add Catch */}
+        <Modal open={addCatchModalOpen} onClose={handleAddCatchModalClose}>
+          <AddCatchReportModule
+            onClose={handleAddCatchModalClose}
+          ></AddCatchReportModule>
         </Modal>
       </MapContainer>
     </div>

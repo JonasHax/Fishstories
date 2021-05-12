@@ -1,22 +1,22 @@
 .Container {
-  position: relative;
   background-color: black;
-  height: 90vh;
-  width: 50vh;
-  background-image: url("https://pbs.twimg.com/media/CoFG26CUsAAeluU.jpg");
+  height: 100%;
+  width: 100%;
+  /* background-image: url("https://pbs.twimg.com/media/CoFG26CUsAAeluU.jpg");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
-  /* background-repeat: cover; */
+  background-position: center; */
 }
 
 .TopBar {
-  /* position: absolute; */
-  /* top: 0; */
-  /* padding-top: 50px; */
-  /* padding-top: 1vh; */
-  /* z-index: 1; */
+  /* position: fixed;
+  z-index: 999; */
 }
 
 .BottomBar {
+}
+
+.CoverImage {
+  /* height: 100%; */
+  width: 100%;
 }

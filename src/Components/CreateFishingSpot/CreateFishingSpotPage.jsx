@@ -32,7 +32,7 @@ export const CreateFishingSpotPage = () => {
   const [type, setType] = useState("");
   const [possibleCatches, setPossibleCatches] = useState([]);
 
-  const fishTypes = require("./fishTypes.json");
+  const fishTypes = require("../../Data/fishTypes.json");
 
   const eventHandlers = useMemo(
     () => ({
@@ -70,12 +70,20 @@ export const CreateFishingSpotPage = () => {
   }
 
   const handleClick = () => {
-    console.log(position.lat + " - " + position.lng);
-    console.log(title);
-    console.log(description);
-    console.log(type);
-    console.log(possibleCatches);
+    // console.log(position.lat + " - " + position.lng);
+    // console.log(title);
+    // console.log(description);
+    // console.log(type);
+    // console.log(possibleCatches);
     sendToApi();
+    clearStuff();
+  };
+
+  const clearStuff = () => {
+    setTitle("");
+    setDescription("");
+    setType("");
+    setPossibleCatches([]);
   };
 
   const handleTitleChange = (event) => {
@@ -138,6 +146,7 @@ export const CreateFishingSpotPage = () => {
             <MenuItem value={"Kyst"}>Kyst</MenuItem>
             <MenuItem value={"Sø"}>Sø</MenuItem>
             <MenuItem value={"Å"}>Å</MenuItem>
+            <MenuItem value={"P&T"}>P&T</MenuItem>
           </Select>
         </FormControl>
         <button className={css.grimKnap} onClick={handleClick}>

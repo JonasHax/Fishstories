@@ -1,19 +1,15 @@
 import React, { useEffect } from "react";
-import "./PopUpModule.css";
+import css from "./PopUpModule.module.css";
 import { Card, CardContent } from "@material-ui/core";
 
 export const PopUp = (props) => {
-  const [open, setOpen] = React.useState(true);
-
-  useEffect(() => {
-    setOpen(props.isOpen);
-  }, [open]);
-
   return (
-    <Card className={"Module"}>
+    <Card className={css.Module}>
       <CardContent>
         <div>
-          <div className={"FishingSpot-CloseButton"}>❌</div>
+          <div className={css.FishingSpot_CloseButton} onClick={props.onClose}>
+            ❌
+          </div>
           {props.children}
         </div>
       </CardContent>

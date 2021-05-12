@@ -1,16 +1,31 @@
-import React from 'react';
-import './AddCatch.css';
-import logo from '../../images/fishAdd.png';
+import React, { useState } from "react";
+import css from "./AddCatch.module.css";
+import logo from "../../images/fishAdd.png";
+import { AddCatchReportModule } from "../AddCatchReport/AddCatchReportModule";
+import { Modal } from "@material-ui/core";
 
 export const AddCatchButton = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleClose = () => setModalOpen(false);
+  const handleShow = () => setModalOpen(true);
 
   function handleClick() {
-    alert("jonas er et æg")
-    }
-  
+    // handleShow();
+    // alert("jonas er et æg");
+    // return <AddCatchReportModule></AddCatchReportModule>;
+  }
+
   return (
-    <button className={"add-button AnimatedButton"} onClick={handleClick}>
-      <img  className={'add-img'} src={logo}></img>
-    </button>
+    <div className={css.Container}>
+      <button
+        className={[css.add_button, css.AnimatedButton].join(" ")}
+        onClick={handleClick}
+      >
+        <img className={css.add_img} src={logo} alt=""></img>
+      </button>
+      {/* <Modal open={modalOpen} onClose={handleClose}>
+        <AddCatchReportModule></AddCatchReportModule>;
+      </Modal> */}
+    </div>
   );
 };
