@@ -9,6 +9,7 @@ import { Modal } from "@material-ui/core";
 import { FilterMenu } from "../FilterButton/FilterMenu";
 import { AddCatchButton } from "../AddCatchButton/AddCatch";
 import { AddCatchReportModule } from "../AddCatchReport/AddCatchReportModule";
+import { icon, catchReportIcon } from "./fishingSpotIcons";
 
 const Fiskekort = (props) => {
   const [fishingSpotModalOpen, setFishingSpotModalOpen] = useState(false);
@@ -26,23 +27,6 @@ const Fiskekort = (props) => {
   // Data
   const fishingSpots = props.fishingSpots;
   const catchReports = props.catchReports;
-
-  // Marker Icon - skal ud i eget @ some point
-  const icon = L.icon({
-    iconUrl: require("../../images/smoll.png").default,
-    iconSize: [26, 45],
-    iconRetinaUrl: require("../../images/smoll.png").default,
-    iconAnchor: [13, 44],
-    popupAnchor: [0, -45],
-  });
-
-  const catchReportIcon = L.icon({
-    iconUrl: require("../../images/catchReportIcon.png").default,
-    iconSize: [35, 35],
-    iconRetinaUrl: require("../../images/catchReportIcon.png").default,
-    iconAnchor: [17, 35],
-    popupAnchor: [-5, -35],
-  });
 
   return (
     <div>
