@@ -17,10 +17,9 @@ export const FishingSpotModule = (props) => {
           alt="billede"
         ></img>
       </div>
-      <div className={"FishingSpot-FishContainer"}>
+      <div  className={"FishingSpot-FishContainer"}>
         <FishType fishTypes={fishingSpot.fishTypes}></FishType>
-      </div>
-
+        </div>
       <div className={"FishingSpot-TextField"}>{fishingSpot.description}</div>
     </PopUp>
   );
