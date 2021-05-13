@@ -29,13 +29,78 @@ const Fiskekort = (props) => {
   const [addCatchModalOpen, setAddCatchModalOpen] = useState(false);
   const handleAddCatchModalClose = () => setAddCatchModalOpen(false);
   const handleAddCatchModalShow = () => setAddCatchModalOpen(true);
+  const [spotsLoaded, setSpotsLoaded] = useState(false);
 
-  // Data
-  const fishingSpots = props.fishingSpots;
-  const catchReports = props.catchReports;
+  // Initial Data from API
+  const initialFishingSpots = props.fishingSpots;
+  const initialCatchReports = props.catchReports;
+
+  // Display arrays (arrays that are shown on the map and can be changed)
+  const [fishingSpotsDisplayArray, setFishingSpotsDisplayArray] = useState([]);
+
+  // Filter functions
+  const FilterByType = (type) => {
+    const filteredArray = [];
+    if (fishingSpotsDisplayArray.length !== initialFishingSpots.length) {
+      initialFishingSpots.forEach((spot) => {
+        if (spot.type === type) {
+          filteredArray.push(spot);
+        }
+      });
+    } else {
+      initialFishingSpots.forEach((spot) => {
+        if (spot.type === type) {
+          filteredArray.push(spot);
+        }
+      });
+    }
+    setFishingSpotsDisplayArray(filteredArray);
+  };
+
+  const FilterBySpecies = (species) => {
+    const filteredArray = [];
+    if (fishingSpotsDisplayArray.length !== initialFishingSpots.length) {
+      fishingSpotsDisplayArray.forEach((spot) => {
+        species.forEach((specie) => {
+          if (spot.fishTypes.includes(specie)) {
+            filteredArray.push(spot);
+          }
+        });
+      });
+    } else {
+      initialFishingSpots.forEach((spot) => {
+        species.forEach((specie) => {
+          if (spot.fishTypes.includes(specie)) {
+            filteredArray.push(spot);
+          }
+        });
+      });
+    }
+    setFishingSpotsDisplayArray(filteredArray);
+  };
+
+  // Effect for loading the display array with the data from the API when it's fetched
+  useEffect(() => {
+    if (initialFishingSpots.length > 0 && !spotsLoaded) {
+      setFishingSpotsDisplayArray(initialFishingSpots);
+      setSpotsLoaded(true);
+    }
+  }, [initialFishingSpots, spotsLoaded]);
 
   return (
     <div>
+      <button
+        onClick={() => {
+          // FilterByType("Å");
+          FilterBySpecies(["Havørred", "Ål"]);
+          console.log(fishingSpotsDisplayArray);
+        }}
+      ></button>
+      <button
+        onClick={() => {
+          FilterByType("Sø");
+        }}
+      ></button>
       <MapContainer
         className={css.MapCont}
         center={[57.053777295262705, 9.902697864384805]}
@@ -66,7 +131,7 @@ const Fiskekort = (props) => {
         </LayersControl>
 
         {/* Markers */}
-        {fishingSpots.map((spot) => {
+        {fishingSpotsDisplayArray.map((spot) => {
           return (
             <Marker
               position={[spot.gps.lat, spot.gps.lng]}
@@ -91,7 +156,7 @@ const Fiskekort = (props) => {
         })}
 
         {/* Catches */}
-        {catchReports.map((report) => {
+        {initialCatchReports.map((report) => {
           return (
             <Marker
               position={[report.gps.lat, report.gps.lng]}
