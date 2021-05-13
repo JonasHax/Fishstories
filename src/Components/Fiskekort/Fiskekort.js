@@ -9,7 +9,13 @@ import { Modal } from "@material-ui/core";
 import { FilterMenu } from "../FilterButton/FilterMenu";
 import { AddCatchButton } from "../AddCatchButton/AddCatch";
 import { AddCatchReportModule } from "../AddCatchReport/AddCatchReportModule";
-import { icon, catchReportIcon } from "./fishingSpotIcons";
+import {
+  catchReportIcon,
+  fishingSpotIcon_Coast,
+  fishingSpotIcon_Lake,
+  fishingSpotIcon_PutAndTake,
+  fishingSpotIcon_River,
+} from "./fishingSpotIcons";
 
 const Fiskekort = (props) => {
   const [fishingSpotModalOpen, setFishingSpotModalOpen] = useState(false);
@@ -65,7 +71,15 @@ const Fiskekort = (props) => {
             <Marker
               position={[spot.gps.lat, spot.gps.lng]}
               key={spot.id}
-              icon={icon}
+              icon={
+                spot.type === "Sø"
+                  ? fishingSpotIcon_Lake
+                  : spot.type === "Å"
+                  ? fishingSpotIcon_River
+                  : spot.type === "P&T"
+                  ? fishingSpotIcon_PutAndTake
+                  : fishingSpotIcon_Coast
+              }
               eventHandlers={{
                 click: () => {
                   setCurrentSpot(spot);
