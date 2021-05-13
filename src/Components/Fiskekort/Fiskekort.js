@@ -30,6 +30,8 @@ const Fiskekort = (props) => {
   const handleAddCatchModalClose = () => setAddCatchModalOpen(false);
   const handleAddCatchModalShow = () => setAddCatchModalOpen(true);
   const [spotsLoaded, setSpotsLoaded] = useState(false);
+  const [filterOptionsSpotType, setFilterOptionsSpotType] = useState("");
+  const [filterOptionsSpecies, setFilterOptionsSpecies] = useState([]);
 
   // Initial Data from API
   const initialFishingSpots = props.fishingSpots;
@@ -39,45 +41,42 @@ const Fiskekort = (props) => {
   const [fishingSpotsDisplayArray, setFishingSpotsDisplayArray] = useState([]);
 
   // Filter functions
-  const FilterByType = (type) => {
+  const FilterDisplayArray = (type, species) => {
     const filteredArray = [];
-    if (fishingSpotsDisplayArray.length !== initialFishingSpots.length) {
+    if (species.length === 0 && type.length === 0) {
+      setFishingSpotsDisplayArray(initialFishingSpots);
+    } else if (species.length === 0 && type.length !== 0) {
       initialFishingSpots.forEach((spot) => {
         if (spot.type === type) {
           filteredArray.push(spot);
         }
+        setFishingSpotsDisplayArray(filteredArray);
       });
+    } else if (species.length !== 0 && type.length === 0) {
+      initialFishingSpots.forEach((spot) => {
+        species.forEach((specie) => {
+          if (spot.fishTypes.includes(specie)) {
+            filteredArray.push(spot);
+          }
+        });
+      });
+      setFishingSpotsDisplayArray(filteredArray);
     } else {
       initialFishingSpots.forEach((spot) => {
-        if (spot.type === type) {
-          filteredArray.push(spot);
-        }
+        species.forEach((specie) => {
+          if (spot.type === type && spot.fishTypes.includes(specie)) {
+            filteredArray.push(spot);
+          }
+        });
       });
+      setFishingSpotsDisplayArray(filteredArray);
     }
-    setFishingSpotsDisplayArray(filteredArray);
   };
 
-  const FilterBySpecies = (species) => {
-    const filteredArray = [];
-    if (fishingSpotsDisplayArray.length !== initialFishingSpots.length) {
-      fishingSpotsDisplayArray.forEach((spot) => {
-        species.forEach((specie) => {
-          if (spot.fishTypes.includes(specie)) {
-            filteredArray.push(spot);
-          }
-        });
-      });
-    } else {
-      initialFishingSpots.forEach((spot) => {
-        species.forEach((specie) => {
-          if (spot.fishTypes.includes(specie)) {
-            filteredArray.push(spot);
-          }
-        });
-      });
-    }
-    setFishingSpotsDisplayArray(filteredArray);
-  };
+  // Effect for filtering the displayarray each time filteroptions are changed
+  useEffect(() => {
+    FilterDisplayArray(filterOptionsSpotType, filterOptionsSpecies);
+  }, [filterOptionsSpotType, filterOptionsSpecies]);
 
   // Effect for loading the display array with the data from the API when it's fetched
   useEffect(() => {
@@ -91,14 +90,8 @@ const Fiskekort = (props) => {
     <div>
       <button
         onClick={() => {
-          // FilterByType("Å");
-          FilterBySpecies(["Havørred", "Ål"]);
-          console.log(fishingSpotsDisplayArray);
-        }}
-      ></button>
-      <button
-        onClick={() => {
-          FilterByType("Sø");
+          setFilterOptionsSpecies(["Multe", "Ål"]);
+          setFilterOptionsSpotType("Kyst");
         }}
       ></button>
       <MapContainer
