@@ -90,8 +90,8 @@ const Fiskekort = (props) => {
     <div>
       <button
         onClick={() => {
-          setFilterOptionsSpecies(["Multe", "Ål"]);
-          setFilterOptionsSpotType("Kyst");
+          setFilterOptionsSpecies(["Makrel", "Pighvarre"]);
+          setFilterOptionsSpotType("");
         }}
       ></button>
       <MapContainer
