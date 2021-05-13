@@ -1,0 +1,62 @@
+.FilterContainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 5.3em;
+
+  margin: auto;
+  height: 370px;
+  min-height: 70px;
+  margin-bottom: 10px;
+  max-height: inherit;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.FilterButton {
+  width: 90%;
+  height: 70px;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 0.3em;
+  border: 2px solid #d1d1d1;
+  cursor: pointer;
+
+  /* make text not selecteable */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  transition: 0.2s;
+}
+
+.FilterButton text {
+  position: relative;
+  display: block;
+  text-align: center;
+  top: 50px;
+}
+
+.FilterButton img {
+  width: 100%;
+  height: 100%;
+  margin-top: -20px;
+}
+
+.Pressed {
+  background-color: rgba(88, 101, 216, 1);
+  border: 2px solid rgba(88, 101, 216, 1);
+  color: white;
+}
+
+.Headline {
+  height: 40px;
+}
+
+.Headline h4 {
+  margin: 0;
+  top: 5%;
+  position: relative;
+  margin-left: 10px;
+  color: rgba(88, 101, 216, 1);
+}
