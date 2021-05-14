@@ -13,7 +13,6 @@ export const FilterModule = (props) => {
     selectedItems.forEach((item) => {
       selectedFilters.push(item);
     });
-    console.log(selectedFilters);
   };
   setInitialFilters();
 
@@ -45,8 +44,6 @@ export const FilterModule = (props) => {
       } else {
         selectedFilters.push(id);
       }
-
-      console.log(selectedFilters);
     }
   }
 
