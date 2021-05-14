@@ -13,6 +13,16 @@ export const FilterModule = (props) => {
     props.onClose();
   }
 
+  function handleRydClick() {
+
+    for (let index = 0; index < selectedFilters.length; ++index) {
+      var element = document.getElementById(selectedFilters[index]);
+      element.classList.toggle(css.Pressed);
+  }
+    selectedFilters.splice(0, selectedFilters.length);
+
+  }
+
   function toggleSelected(id) {
     var element = document.getElementById(id);
     element.classList.toggle(css.Pressed);
@@ -43,7 +53,6 @@ export const FilterModule = (props) => {
               id={filter}
               onClick={() => toggleSelected(filter)}
             >
-              {" "}
               <text> {filter} </text>
               <img src={havørrede} alt="" />
             </div>
@@ -51,10 +60,16 @@ export const FilterModule = (props) => {
         })}
       </div>
       <button
-        className={"AcceptButton AnimatedButton NonSelectable"}
+        className={`${css.AcceptButton} ${css.AnimatedButton} ${css.NonSelectable}`}
         onClick={handletilføjClick}
       >
         ✔ Benyt filtræring
+      </button>
+      <button
+        className={`${css.Clear_Filter_Button} ${css.AnimatedButton} ${css.NonSelectable}` }
+        onClick={() => handleRydClick()}
+      >
+        ✖ Ryd filtræring
       </button>
     </PopUp>
   );
