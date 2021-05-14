@@ -26,9 +26,6 @@ const Fiskekort = (props) => {
   const [currentReport, setCurrentReport] = useState([]);
   const handleCatchReportModalClose = () => setCatchReportModalOpen(false);
   const handleCatchReportModalShow = () => setCatchReportModalOpen(true);
-  const [addCatchModalOpen, setAddCatchModalOpen] = useState(false);
-  const handleAddCatchModalClose = () => setAddCatchModalOpen(false);
-  const handleAddCatchModalShow = () => setAddCatchModalOpen(true);
   const [spotsLoaded, setSpotsLoaded] = useState(false);
   const [filterOptionsSpotType, setFilterOptionsSpotType] = useState([]);
   const [filterOptionsSpecies, setFilterOptionsSpecies] = useState([]);
@@ -111,13 +108,7 @@ const Fiskekort = (props) => {
           handleSpecies={handleSpeciesSelected}
           handleTypes={handleSpotTypesSelected}
         />
-        <div
-          onClick={() => {
-            handleAddCatchModalShow();
-          }}
-        >
-          <AddCatchButton />
-        </div>
+        <AddCatchButton />
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Streetview">
             <TileLayer
@@ -196,13 +187,6 @@ const Fiskekort = (props) => {
             catchReport={currentReport}
             onClose={handleCatchReportModalClose}
           ></CatchReportView>
-        </Modal>
-
-        {/* Add Catch */}
-        <Modal open={addCatchModalOpen} onClose={handleAddCatchModalClose}>
-          <AddCatchReportModule
-            onClose={handleAddCatchModalClose}
-          ></AddCatchReportModule>
         </Modal>
       </MapContainer>
     </div>
