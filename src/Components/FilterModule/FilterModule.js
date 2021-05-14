@@ -8,7 +8,10 @@ export const FilterModule = (props) => {
   const menuTitel = props.menuTitel;
   const selectedFilters = new Array();
 
-  function handletilføjClick() {}
+  function handletilføjClick() {
+    props.handleSelectedItems(selectedFilters);
+    props.onClose();
+  }
 
   function toggleSelected(id) {
     var element = document.getElementById(id);
@@ -27,7 +30,7 @@ export const FilterModule = (props) => {
   }
 
   return (
-    <PopUp>
+    <PopUp onClose={props.onClose}>
       <div className={css.Headline}>
         {" "}
         <h4> {menuTitel} </h4>{" "}

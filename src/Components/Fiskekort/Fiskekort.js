@@ -30,7 +30,7 @@ const Fiskekort = (props) => {
   const handleAddCatchModalClose = () => setAddCatchModalOpen(false);
   const handleAddCatchModalShow = () => setAddCatchModalOpen(true);
   const [spotsLoaded, setSpotsLoaded] = useState(false);
-  const [filterOptionsSpotType, setFilterOptionsSpotType] = useState("");
+  const [filterOptionsSpotType, setFilterOptionsSpotType] = useState([]);
   const [filterOptionsSpecies, setFilterOptionsSpecies] = useState([]);
 
   // Initial Data from API
@@ -47,9 +47,11 @@ const Fiskekort = (props) => {
       setFishingSpotsDisplayArray(initialFishingSpots);
     } else if (species.length === 0 && type.length !== 0) {
       initialFishingSpots.forEach((spot) => {
-        if (spot.type === type) {
-          filteredArray.push(spot);
-        }
+        type.forEach((type) => {
+          if (spot.type === type) {
+            filteredArray.push(spot);
+          }
+        });
         setFishingSpotsDisplayArray(filteredArray);
       });
     } else if (species.length !== 0 && type.length === 0) {
@@ -63,10 +65,12 @@ const Fiskekort = (props) => {
       setFishingSpotsDisplayArray(filteredArray);
     } else {
       initialFishingSpots.forEach((spot) => {
-        species.forEach((specie) => {
-          if (spot.type === type && spot.fishTypes.includes(specie)) {
-            filteredArray.push(spot);
-          }
+        type.forEach((type) => {
+          species.forEach((specie) => {
+            if (spot.type === type && spot.fishTypes.includes(specie)) {
+              filteredArray.push(spot);
+            }
+          });
         });
       });
       setFishingSpotsDisplayArray(filteredArray);
@@ -86,21 +90,27 @@ const Fiskekort = (props) => {
     }
   }, [initialFishingSpots, spotsLoaded]);
 
+  // More functions
+  const handleSpeciesSelected = (selectedSpecies) => {
+    setFilterOptionsSpecies(selectedSpecies);
+  };
+
+  const handleSpotTypesSelected = (selectedTypes) => {
+    setFilterOptionsSpotType(selectedTypes);
+  };
+
   return (
     <div>
-      <button
-        onClick={() => {
-          setFilterOptionsSpecies(["Makrel", "Pighvarre"]);
-          setFilterOptionsSpotType("");
-        }}
-      ></button>
       <MapContainer
         className={css.MapCont}
         center={[57.053777295262705, 9.902697864384805]}
         zoom={10}
         minZoom={7}
       >
-        <FilterMenu />
+        <FilterMenu
+          handleSpecies={handleSpeciesSelected}
+          handleTypes={handleSpotTypesSelected}
+        />
         <div
           onClick={() => {
             handleAddCatchModalShow();
