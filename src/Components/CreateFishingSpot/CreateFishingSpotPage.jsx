@@ -31,8 +31,16 @@ export const CreateFishingSpotPage = () => {
   const [description, setDescription] = useState("");
   const [type, setType] = useState("");
   const [possibleCatches, setPossibleCatches] = useState([]);
+  const fish = [];
 
   const fishTypes = require("../../Data/fishTypes.json");
+
+  const convertFishData = () => {
+    fishTypes.fish.forEach((fishtype) => {
+      fish.push(fishtype.specie);
+    });
+  };
+  convertFishData();
 
   const eventHandlers = useMemo(
     () => ({
@@ -130,7 +138,7 @@ export const CreateFishingSpotPage = () => {
         <MultipleSelect
           label="Vælg fiskearter"
           values={possibleCatches}
-          options={fishTypes.fish}
+          options={fish}
           onChange={handleChangeMultiSelect}
           SelectProps={{
             isCreatable: true,

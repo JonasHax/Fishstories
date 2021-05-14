@@ -66,12 +66,12 @@ export const FilterModule = (props) => {
           return (
             <div
               className={css.FilterButton}
-              id={filter}
-              onClick={() => toggleSelected(filter)}
+              id={filter.specie}
+              onClick={() => toggleSelected(filter.specie)}
             >
               {" "}
-              <text> {filter} </text>
-              <img src={havørrede} alt="" />
+              <text> {filter.specie} </text>
+              <img src={filter.image} alt="" />
             </div>
           );
         })}
