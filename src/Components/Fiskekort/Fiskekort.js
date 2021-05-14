@@ -8,7 +8,6 @@ import { CatchReportView } from "../CatchReport/CatchReportView";
 import { Modal } from "@material-ui/core";
 import { FilterMenu } from "../FilterButton/FilterMenu";
 import { AddCatchButton } from "../AddCatchButton/AddCatch";
-import { AddCatchReportModule } from "../AddCatchReport/AddCatchReportModule";
 import {
   catchReportIcon,
   fishingSpotIcon_Coast,
@@ -107,6 +106,8 @@ const Fiskekort = (props) => {
         <FilterMenu
           handleSpecies={handleSpeciesSelected}
           handleTypes={handleSpotTypesSelected}
+          selectedOptionsSpecies={filterOptionsSpecies}
+          selectedOptionsTypes={filterOptionsSpotType}
         />
         <AddCatchButton />
         <LayersControl position="topright">
