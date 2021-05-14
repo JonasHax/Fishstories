@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PopUp } from "../PopUpModule/PopUpModule";
 import css from "./FilterModule.module.css";
-import havørrede from "../../images/havørred.png";
 
 export const FilterModule = (props) => {
   const filterTypes = props.filterTypes;

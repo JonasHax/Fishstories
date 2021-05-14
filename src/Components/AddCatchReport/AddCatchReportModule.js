@@ -4,7 +4,10 @@ import { PopUp } from "../PopUpModule/PopUpModule";
 import AddPhoto from "../../images/addphoto.png";
 
 export const AddCatchReportModule = (props) => {
+  const species = require("../../Data/fishTypes.json");
+
   function handlePhotoClick() {
+    console.log(species);
     alert("add photo");
   }
 
@@ -23,10 +26,10 @@ export const AddCatchReportModule = (props) => {
   return (
     <PopUp onClose={props.onClose}>
       <select className={"DropDown"}>
-        <option>Havørrede</option>
-        <option>Krokodille</option>
-        <option>Skilpade</option>
-        <option>Hvidhaj</option>
+        <option>Vælg Fiskeart</option>
+        {species.fish.map((fish) => {
+          return <option>{fish.specie}</option>;
+        })}
       </select>
 
       <div className={"SpinnerContainer"}>
