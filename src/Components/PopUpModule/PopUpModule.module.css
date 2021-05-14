@@ -13,6 +13,8 @@
   margin: auto;
 
   background-color: white;
+
+  z-index: 501;
 }
 
 .Darken_BG {
