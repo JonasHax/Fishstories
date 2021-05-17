@@ -1,10 +1,9 @@
 .Location {
-  bottom: 6px;
   left: 6px;
   padding: 10px;
 
   font-size: 3mm;
-  position: absolute;
+
   border-radius: 0.3em;
   z-index: 2;
 
@@ -19,6 +18,11 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+}
+
+.absolute {
+  bottom: 6px;
+  position: absolute;
 }
 
 .Location:active {
