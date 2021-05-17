@@ -4,7 +4,6 @@ import { PopUp } from "../PopUpModule/PopUpModule";
 import AddPhoto from "../../images/addphoto.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FiskekortAPIHandler } from "../Fiskekort/FiskekortAPIHandler";
 
 export const AddCatchReportModule = (props) => {
   const species = require("../../Data/fishTypes.json");
