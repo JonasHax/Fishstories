@@ -3,9 +3,14 @@ import css from "./FishingSpotModule.module.css";
 import { FishType } from "./FishType";
 import { Location } from "./FishingLocation";
 import { PopUp } from "../PopUpModule/PopUpModule";
+import defaultCoast from "../../images/fishingSpotType_Coast.png";
+import defaultLake from "../../images/fishingSpotType_Lake.png";
+import defaultPutAndTake from "../../images/fishingSpotType_PutAndTake.png";
+import defaultRiver from "../../images/fishingSpotType_River.png";
 
 export const FishingSpotModule = (props) => {
   const fishingSpot = props.chosenSpot;
+
   return (
     <PopUp onClose={props.onClose}>
       <div className={css.FishingSpot_CoverImage}>
@@ -13,7 +18,15 @@ export const FishingSpotModule = (props) => {
         <div className={css.FishingSpot_StoryButton}>🐟</div>
         <img
           className={css.FishingSpot_Image}
-          src="https://i.imgur.com/jTzHTWU.png"
+          src={
+            fishingSpot.type === "Kyst"
+              ? defaultCoast
+              : fishingSpot.type === "Sø"
+              ? defaultLake
+              : fishingSpot.type === "Å"
+              ? defaultRiver
+              : defaultPutAndTake
+          }
           alt="billede"
         ></img>
       </div>

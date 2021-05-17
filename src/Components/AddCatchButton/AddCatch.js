@@ -10,9 +10,7 @@ export const AddCatchButton = () => {
   const handleShow = () => setModalOpen(true);
 
   function handleClick() {
-    // handleShow();
-    // alert("jonas er et æg");
-    // return <AddCatchReportModule></AddCatchReportModule>;
+    handleShow();
   }
 
   return (
@@ -23,9 +21,9 @@ export const AddCatchButton = () => {
       >
         <img className={css.add_img} src={logo} alt=""></img>
       </button>
-      {/* <Modal open={modalOpen} onClose={handleClose}>
-        <AddCatchReportModule></AddCatchReportModule>;
-      </Modal> */}
+      <Modal open={modalOpen} onClose={handleClose}>
+        <AddCatchReportModule onClose={handleClose}></AddCatchReportModule>
+      </Modal>
     </div>
   );
 };

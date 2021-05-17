@@ -10,7 +10,12 @@ export const FiskekortAPIHandler = () => {
 
   useEffect(() => {
     async function fetchFishingSpots() {
-      await fetch("https://localhost:5001/api/FishingSpot")
+      await fetch("https://localhost:5001/api/FishingSpot", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((res) => res.json())
         .then((spot) => {
           setSpots(spot);
@@ -22,7 +27,12 @@ export const FiskekortAPIHandler = () => {
     }
 
     async function fetchCatchReports() {
-      await fetch("https://localhost:5001/api/CatchReport")
+      await fetch("https://localhost:5001/api/CatchReport", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((res) => res.json())
         .then((reports) => {
           setReports(reports);

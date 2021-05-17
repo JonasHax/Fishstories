@@ -8,7 +8,13 @@ import { CatchReportView } from "../CatchReport/CatchReportView";
 import { Modal } from "@material-ui/core";
 import { FilterMenu } from "../FilterButton/FilterMenu";
 import { AddCatchButton } from "../AddCatchButton/AddCatch";
-import { AddCatchReportModule } from "../AddCatchReport/AddCatchReportModule";
+import {
+  catchReportIcon,
+  fishingSpotIcon_Coast,
+  fishingSpotIcon_Lake,
+  fishingSpotIcon_PutAndTake,
+  fishingSpotIcon_River,
+} from "./fishingSpotIcons";
 
 const Fiskekort = (props) => {
   const [fishingSpotModalOpen, setFishingSpotModalOpen] = useState(false);
@@ -19,30 +25,75 @@ const Fiskekort = (props) => {
   const [currentReport, setCurrentReport] = useState([]);
   const handleCatchReportModalClose = () => setCatchReportModalOpen(false);
   const handleCatchReportModalShow = () => setCatchReportModalOpen(true);
-  const [addCatchModalOpen, setAddCatchModalOpen] = useState(false);
-  const handleAddCatchModalClose = () => setAddCatchModalOpen(false);
-  const handleAddCatchModalShow = () => setAddCatchModalOpen(true);
+  const [spotsLoaded, setSpotsLoaded] = useState(false);
+  const [filterOptionsSpotType, setFilterOptionsSpotType] = useState([]);
+  const [filterOptionsSpecies, setFilterOptionsSpecies] = useState([]);
 
-  // Data
-  const fishingSpots = props.fishingSpots;
-  const catchReports = props.catchReports;
+  // Initial Data from API
+  const initialFishingSpots = props.fishingSpots;
+  const initialCatchReports = props.catchReports;
 
-  // Marker Icon - skal ud i eget @ some point
-  const icon = L.icon({
-    iconUrl: require("../../images/smoll.png").default,
-    iconSize: [26, 45],
-    iconRetinaUrl: require("../../images/smoll.png").default,
-    iconAnchor: [13, 44],
-    popupAnchor: [0, -45],
-  });
+  // Display arrays (arrays that are shown on the map and can be changed)
+  const [fishingSpotsDisplayArray, setFishingSpotsDisplayArray] = useState([]);
 
-  const catchReportIcon = L.icon({
-    iconUrl: require("../../images/catchReportIcon.png").default,
-    iconSize: [35, 35],
-    iconRetinaUrl: require("../../images/catchReportIcon.png").default,
-    iconAnchor: [17, 35],
-    popupAnchor: [-5, -35],
-  });
+  // Filter functions
+  const FilterDisplayArray = (type, species) => {
+    const filteredArray = [];
+    if (species.length === 0 && type.length === 0) {
+      setFishingSpotsDisplayArray(initialFishingSpots);
+    } else if (species.length === 0 && type.length !== 0) {
+      initialFishingSpots.forEach((spot) => {
+        type.forEach((type) => {
+          if (spot.type === type) {
+            filteredArray.push(spot);
+          }
+        });
+        setFishingSpotsDisplayArray(filteredArray);
+      });
+    } else if (species.length !== 0 && type.length === 0) {
+      initialFishingSpots.forEach((spot) => {
+        species.forEach((specie) => {
+          if (spot.fishTypes.includes(specie)) {
+            filteredArray.push(spot);
+          }
+        });
+      });
+      setFishingSpotsDisplayArray(filteredArray);
+    } else {
+      initialFishingSpots.forEach((spot) => {
+        type.forEach((type) => {
+          species.forEach((specie) => {
+            if (spot.type === type && spot.fishTypes.includes(specie)) {
+              filteredArray.push(spot);
+            }
+          });
+        });
+      });
+      setFishingSpotsDisplayArray(filteredArray);
+    }
+  };
+
+  // Effect for filtering the displayarray each time filteroptions are changed
+  useEffect(() => {
+    FilterDisplayArray(filterOptionsSpotType, filterOptionsSpecies);
+  }, [filterOptionsSpotType, filterOptionsSpecies]);
+
+  // Effect for loading the display array with the data from the API when it's fetched
+  useEffect(() => {
+    if (initialFishingSpots.length > 0 && !spotsLoaded) {
+      setFishingSpotsDisplayArray(initialFishingSpots);
+      setSpotsLoaded(true);
+    }
+  }, [initialFishingSpots, spotsLoaded]);
+
+  // More functions
+  const handleSpeciesSelected = (selectedSpecies) => {
+    setFilterOptionsSpecies(selectedSpecies);
+  };
+
+  const handleSpotTypesSelected = (selectedTypes) => {
+    setFilterOptionsSpotType(selectedTypes);
+  };
 
   return (
     <div>
@@ -52,14 +103,13 @@ const Fiskekort = (props) => {
         zoom={10}
         minZoom={7}
       >
-        <FilterMenu />
-        <div
-          onClick={() => {
-            handleAddCatchModalShow();
-          }}
-        >
-          <AddCatchButton />
-        </div>
+        <FilterMenu
+          handleSpecies={handleSpeciesSelected}
+          handleTypes={handleSpotTypesSelected}
+          selectedOptionsSpecies={filterOptionsSpecies}
+          selectedOptionsTypes={filterOptionsSpotType}
+        />
+        <AddCatchButton />
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Streetview">
             <TileLayer
@@ -76,12 +126,20 @@ const Fiskekort = (props) => {
         </LayersControl>
 
         {/* Markers */}
-        {fishingSpots.map((spot) => {
+        {fishingSpotsDisplayArray.map((spot) => {
           return (
             <Marker
               position={[spot.gps.lat, spot.gps.lng]}
               key={spot.id}
-              icon={icon}
+              icon={
+                spot.type === "Sø"
+                  ? fishingSpotIcon_Lake
+                  : spot.type === "Å"
+                  ? fishingSpotIcon_River
+                  : spot.type === "P&T"
+                  ? fishingSpotIcon_PutAndTake
+                  : fishingSpotIcon_Coast
+              }
               eventHandlers={{
                 click: () => {
                   setCurrentSpot(spot);
@@ -93,7 +151,7 @@ const Fiskekort = (props) => {
         })}
 
         {/* Catches */}
-        {catchReports.map((report) => {
+        {initialCatchReports.map((report) => {
           return (
             <Marker
               position={[report.gps.lat, report.gps.lng]}
@@ -130,13 +188,6 @@ const Fiskekort = (props) => {
             catchReport={currentReport}
             onClose={handleCatchReportModalClose}
           ></CatchReportView>
-        </Modal>
-
-        {/* Add Catch */}
-        <Modal open={addCatchModalOpen} onClose={handleAddCatchModalClose}>
-          <AddCatchReportModule
-            onClose={handleAddCatchModalClose}
-          ></AddCatchReportModule>
         </Modal>
       </MapContainer>
     </div>
