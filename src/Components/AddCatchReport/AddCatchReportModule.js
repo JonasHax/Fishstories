@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import "./AddCatchReportModule.css";
+import css from "./AddCatchReport.module.css";
 import { PopUp } from "../PopUpModule/PopUpModule";
 import AddPhoto from "../../images/addphoto.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FiskekortAPIHandler } from "../Fiskekort/FiskekortAPIHandler";
 
 export const AddCatchReportModule = (props) => {
   const species = require("../../Data/fishTypes.json");
@@ -9,6 +12,7 @@ export const AddCatchReportModule = (props) => {
   const [caughtFish, setCaughtFish] = useState("");
   const [weight, setWeight] = useState();
   const [length, setLength] = useState();
+  const [caughtPosition, setPosition] = useState({ lat: null, lng: null });
 
   function handlePhotoClick() {
     alert("add photo");
@@ -19,19 +23,94 @@ export const AddCatchReportModule = (props) => {
   }
 
   function handleLocationClick() {
-    alert("brug lokation");
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setPosition({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+      toast.success("Lokation fundet");
+    });
   }
 
   function handletilføjClick() {
+    // If no weight and length is given, set to a default 0.0
+    if (weight === undefined) {
+      setWeight(0.0);
+    }
+    if (length === undefined) {
+      setLength(0.0);
+    }
+
     console.log(description);
     console.log(caughtFish);
     console.log(weight);
     console.log(length);
+    console.log(caughtPosition);
 
-    // Tjek om undefined
-    // if (weight === undefined) {
-    //   console.log("Pik");
-    // }
+    if (checkData()) {
+      sendToApi();
+      onSucces();
+    }
+  }
+
+  const onSucces = () => {
+    toast.success("Fangstrapport tilføjet");
+    setDescription("");
+    setCaughtFish("");
+    setPosition({ lat: null, lng: null });
+  };
+
+  const checkData = () => {
+    let errors = 0;
+
+    if (description.length === 0) {
+      errors++;
+      toast.error("Beskriv din fangst");
+    }
+    if (caughtFish.length === 0 || caughtFish === "Vælg Fiskeart") {
+      errors++;
+      toast.error("Vælg fiskeart");
+    }
+    if (caughtPosition.lat === null || caughtPosition.lng === null) {
+      errors++;
+      toast.error(
+        "Vælg den fiskeplads fisken er fanget, eller brug nuværende lokation"
+      );
+    }
+
+    if (errors > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  async function sendToApi() {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        location: "Ikke angivet",
+        description: description,
+        fishType: caughtFish,
+        length: length,
+        weight: weight,
+        gps: caughtPosition,
+        image: "Placeholder.png",
+      }),
+    };
+    await fetch("https://localhost:5001/api/CatchReport", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => {
+        console.log(err);
+        toast.error(
+          "Der skete en fejl. Din fangst er ikke rapporteret. Prøv igen"
+        );
+      });
   }
 
   // State handlers
@@ -42,16 +121,16 @@ export const AddCatchReportModule = (props) => {
     setCaughtFish(event.target.value);
   };
   const handleWeightChange = (event) => {
-    setWeight(event.target.value);
+    setWeight(parseFloat(event.target.value));
   };
   const handleLengthChange = (event) => {
-    setLength(event.target.value);
+    setLength(parseFloat(event.target.value));
   };
 
   return (
     <PopUp onClose={props.onClose}>
       <select
-        className={"DropDown"}
+        className={css.DropDown}
         value={caughtFish}
         onChange={handleCaughtFishChange}
       >
@@ -61,11 +140,11 @@ export const AddCatchReportModule = (props) => {
         })}
       </select>
 
-      <div className={"SpinnerContainer"}>
-        <div className={"AutoMargin"}>
+      <div className={css.SpinnerContainer}>
+        <div className={css.AutoMargin}>
           <input
             id="weight"
-            className={"Spinner"}
+            className={css.Spinner}
             type="number"
             min="0"
             max="100"
@@ -74,14 +153,14 @@ export const AddCatchReportModule = (props) => {
             value={weight}
             onChange={handleWeightChange}
           ></input>
-          <label className={"LabelText"} for="length">
+          <label className={css.LabelText} for="length">
             Kg
           </label>
         </div>
-        <div className={"AutoMargin"}>
+        <div className={css.AutoMargin}>
           <input
             id="length"
-            className={"Spinner"}
+            className={css.Spinner}
             type="number"
             min="0"
             max="500"
@@ -90,51 +169,77 @@ export const AddCatchReportModule = (props) => {
             value={length}
             onChange={handleLengthChange}
           ></input>
-          <label className={"LabelText"} for="length">
+          <label className={css.LabelText} for="length">
             Cm
           </label>
         </div>
       </div>
 
       <textarea
-        className={"TextField"}
+        className={css.TextField}
         type="text"
         placeholder="Beskriv din fangst"
         value={description}
         onChange={handleDescriptionChange}
       ></textarea>
 
-      <div className={"AddPhoto NonSelectable"} onClick={handlePhotoClick}>
+      <div
+        className={[css.AddPhoto, css.NonSelectable].join(" ")}
+        onClick={handlePhotoClick}
+      >
         <img
-          className={"AddPhotoImage NonSelectable"}
+          className={[css.AddPhotoImage, css.NonSelectable].join(" ")}
           src={AddPhoto}
           alt=""
         ></img>
       </div>
 
-      <div className={"ButtonContainer"}>
+      <div className={css.ButtonContainer}>
         <button
-          className={"LocationButton AnimatedButton NonSelectable"}
+          className={[
+            css.LocationButton,
+            css.AnimatedButton,
+            css.NonSelectable,
+          ].join(" ")}
           onClick={handlefishingSpotClick}
         >
-          <div className={"ButtonText"}> Vælg fiskeplads </div>{" "}
-          <div className={"ButtonIcon"}> 🎣 </div>
+          <div className={css.ButtonText}> Vælg fiskeplads </div>{" "}
+          <div className={css.ButtonIcon}> 🎣 </div>
         </button>
         <button
-          className={"LocationButton AnimatedButton NonSelectable"}
+          className={[
+            css.LocationButton,
+            css.AnimatedButton,
+            css.NonSelectable,
+          ].join(" ")}
           onClick={handleLocationClick}
         >
-          <div className={"ButtonText"}> Brug lokation </div>{" "}
-          <div className={"ButtonIcon"}> 🚩 </div>
+          <div className={css.ButtonText}> Brug lokation </div>{" "}
+          <div className={css.ButtonIcon}> 🚩 </div>
         </button>
       </div>
       <button
-        className={"AcceptButton AnimatedButton NonSelectable"}
+        className={[
+          css.AcceptButton,
+          css.AnimatedButton,
+          css.NonSelectable,
+        ].join(" ")}
         onClick={handletilføjClick}
       >
         {" "}
         ✔ Tilføj{" "}
       </button>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </PopUp>
   );
 };
