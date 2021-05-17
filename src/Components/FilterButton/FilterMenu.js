@@ -3,6 +3,12 @@ import css from "./FilterButton.module.css";
 import { FilterButton } from "./FilterButton";
 import { Modal } from "@material-ui/core";
 import { FilterModule } from "../FilterModule/FilterModule";
+import Coast from "../../images/fishingSpotType_Coast.png";
+import River from "../../images/fishingSpotType_River.png";
+import PutAndTake from "../../images/fishingSpotType_PutAndTake.png";
+import Lake from "../../images/fishingSpotType_Lake.png";
+import FilterButton_Species from "../../images/havørred.png";
+import FilterButton_Spots from "../../images/filterbutton_lake.png";
 
 export const FilterMenu = (props) => {
   const [toggleSpecies, setToggleSpecies] = useState(false);
@@ -19,18 +25,14 @@ export const FilterMenu = (props) => {
             setToggleSpecies(true);
           }}
         >
-          <FilterButton
-            image={"https://i.imgur.com/JsLSgeQ.png"}
-          ></FilterButton>
+          <FilterButton image={FilterButton_Species}></FilterButton>
         </div>
         <div
           onClick={() => {
             setToggleTypes(true);
           }}
         >
-          <FilterButton
-            image={"https://i.imgur.com/FL725Ou.png"}
-          ></FilterButton>
+          <FilterButton image={FilterButton_Spots}></FilterButton>
         </div>
       </div>
       <Modal open={toggleSpecies} onClose={handleCloseSpecies}>
@@ -48,23 +50,19 @@ export const FilterMenu = (props) => {
           filterTypes={[
             {
               specie: "Kyst",
-              image:
-                "https://www.klimatilpasning.dk/media/1647050/colourbox10385100_kyst_020919_850x304.jpg",
+              image: Coast,
             },
             {
               specie: "Sø",
-              image:
-                "https://img.nordjyske.dk/s3/nj-prod-public-images/32qM6uc2wC9qMeXAuXuqoWRPv5I.jpg?w=960&h=540&scale=both&mode=crop",
+              image: Lake,
             },
             {
               specie: "Å",
-              image:
-                "https://www.fredninger.dk/dnressources/Trend_%C3%85dal_SO.jpg",
+              image: River,
             },
             {
               specie: "P&T",
-              image:
-                "https://esmark.dk/esmark-dev/wp-content/themes/esmark_meltdown/gfx/aktiviteter/put-and-take-top.jpg",
+              image: PutAndTake,
             },
           ]}
           menuTitel={"Vælg fiskesteder"}
