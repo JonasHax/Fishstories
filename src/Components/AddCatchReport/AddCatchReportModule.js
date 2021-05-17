@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AddCatchReportModule.css";
 import { PopUp } from "../PopUpModule/PopUpModule";
 import AddPhoto from "../../images/addphoto.png";
 
 export const AddCatchReportModule = (props) => {
   const species = require("../../Data/fishTypes.json");
+  const [description, setDescription] = useState("");
+  const [caughtFish, setCaughtFish] = useState("");
+  const [weight, setWeight] = useState();
+  const [length, setLength] = useState();
 
   function handlePhotoClick() {
-    console.log(species);
     alert("add photo");
   }
 
@@ -20,12 +23,38 @@ export const AddCatchReportModule = (props) => {
   }
 
   function handletilføjClick() {
-    alert("tilføj");
+    console.log(description);
+    console.log(caughtFish);
+    console.log(weight);
+    console.log(length);
+
+    // Tjek om undefined
+    // if (weight === undefined) {
+    //   console.log("Pik");
+    // }
   }
+
+  // State handlers
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+  const handleCaughtFishChange = (event) => {
+    setCaughtFish(event.target.value);
+  };
+  const handleWeightChange = (event) => {
+    setWeight(event.target.value);
+  };
+  const handleLengthChange = (event) => {
+    setLength(event.target.value);
+  };
 
   return (
     <PopUp onClose={props.onClose}>
-      <select className={"DropDown"}>
+      <select
+        className={"DropDown"}
+        value={caughtFish}
+        onChange={handleCaughtFishChange}
+      >
         <option>Vælg Fiskeart</option>
         {species.fish.map((fish) => {
           return <option>{fish.specie}</option>;
@@ -42,6 +71,8 @@ export const AddCatchReportModule = (props) => {
             max="100"
             step=".1"
             placeholder="Vægt"
+            value={weight}
+            onChange={handleWeightChange}
           ></input>
           <label className={"LabelText"} for="length">
             Kg
@@ -56,6 +87,8 @@ export const AddCatchReportModule = (props) => {
             max="500"
             step=".1"
             placeholder="Længde"
+            value={length}
+            onChange={handleLengthChange}
           ></input>
           <label className={"LabelText"} for="length">
             Cm
@@ -66,7 +99,9 @@ export const AddCatchReportModule = (props) => {
       <textarea
         className={"TextField"}
         type="text"
-        defaultValue={""}
+        placeholder="Beskriv din fangst"
+        value={description}
+        onChange={handleDescriptionChange}
       ></textarea>
 
       <div className={"AddPhoto NonSelectable"} onClick={handlePhotoClick}>
