@@ -12,6 +12,7 @@ export const AddCatchReportModule = (props) => {
   const [weight, setWeight] = useState();
   const [length, setLength] = useState();
   const [caughtPosition, setPosition] = useState({ lat: null, lng: null });
+  const [useLocation, setUseLocation] = useState(false);
 
   function handlePhotoClick() {
     alert("add photo");
@@ -27,7 +28,7 @@ export const AddCatchReportModule = (props) => {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       });
-      toast.success("Lokation fundet");
+      setUseLocation(true);
     });
   }
 
@@ -48,7 +49,6 @@ export const AddCatchReportModule = (props) => {
 
     if (checkData()) {
       sendToApi();
-      onSucces();
     }
   }
 
@@ -103,7 +103,10 @@ export const AddCatchReportModule = (props) => {
     };
     await fetch("https://localhost:5001/api/CatchReport", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        onSucces();
+      })
       .catch((err) => {
         console.log(err);
         toast.error(
@@ -210,6 +213,7 @@ export const AddCatchReportModule = (props) => {
             css.LocationButton,
             css.AnimatedButton,
             css.NonSelectable,
+            useLocation ? css.ChosenLocation : null,
           ].join(" ")}
           onClick={handleLocationClick}
         >
@@ -229,6 +233,7 @@ export const AddCatchReportModule = (props) => {
         ✔ Tilføj{" "}
       </button>
       <ToastContainer
+        className={css.ToastContainer}
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
