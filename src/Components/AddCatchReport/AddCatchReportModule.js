@@ -57,6 +57,8 @@ export const AddCatchReportModule = (props) => {
     setDescription("");
     setCaughtFish("");
     setPosition({ lat: null, lng: null });
+    setWeight(0);
+    setLength(0);
   };
 
   const checkData = () => {
