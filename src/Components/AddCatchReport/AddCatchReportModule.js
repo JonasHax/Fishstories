@@ -34,6 +34,7 @@ export const AddCatchReportModule = (props) => {
         lng: position.coords.longitude,
       });
       setUseLocation(true);
+      setUseFishingSpot(false);
     });
   }
 
@@ -141,6 +142,7 @@ export const AddCatchReportModule = (props) => {
     setFishingSpotChosen(chosenSpot);
     setChooseSpotOpen(false);
     setUseFishingSpot(true);
+    setUseLocation(false);
   };
 
   return (
