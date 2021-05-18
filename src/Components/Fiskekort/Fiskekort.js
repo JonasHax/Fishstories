@@ -109,7 +109,7 @@ const Fiskekort = (props) => {
           selectedOptionsSpecies={filterOptionsSpecies}
           selectedOptionsTypes={filterOptionsSpotType}
         />
-        <AddCatchButton />
+        <AddCatchButton spots={initialFishingSpots} />
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Streetview">
             <TileLayer
