@@ -40,8 +40,9 @@
 
 .FilterButton img {
   width: 100%;
-  height: 100%;
-  margin-top: -20px;
+  height: 72%;
+  margin-top: -18px;
+  border-radius: 0.2em;
 }
 
 .Pressed {
@@ -110,4 +111,25 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+}
+
+.Kyst {
+  height: 100% !important;
+}
+
+.Sø {
+  height: 100% !important;
+}
+
+.PT {
+  height: 100% !important;
+}
+
+.Å {
+  height: 100% !important;
+}
+
+.Vælgfiskesteder {
+  grid-template-columns: 100%;
+  grid-template-rows: 5.7em;
 }

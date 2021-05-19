@@ -1,176 +1,133 @@
 {
     "fish": [
         {
-            "specie": "Aborre",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/aborre.jpg"
+            "specie": "Aborre"
         },
         {
-            "specie": "Brasen",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/brasen.jpg"
+            "specie": "Brasen"
         },
         {
-            "specie": "Bækørred",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/baekoerred.jpg"
+            "specie": "Bækørred"
         },
         {
-            "specie": "Brosme",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/brosme.jpg"
+            "specie": "Brosme"
         },
         {
-            "specie": "Døbel",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/doebel.jpg"
+            "specie": "Døbel"
         },
         {
-            "specie": "Fjeldørred",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/fjeldoerred.jpg"
+            "specie": "Fjeldørred"
         },
         {
-            "specie": "Fjæsing",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/fjaesing.jpg"
+            "specie": "Fjæsing"
         },
         {
-            "specie": "Hvilling",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/hvilling.jpg"
+            "specie": "Hvilling"
         },
         {
-            "specie": "Karusse",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/karusse.jpg"
+            "specie": "Karusse"
         },
         {
-            "specie": "Hellefisk",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/hellefisk.jpg"
+            "specie": "Hellefisk"
         },
         {
-            "specie": "Gedde",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/gedde.jpg"
+            "specie": "Gedde"
         },
         {
-            "specie": "Havkat",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/havkat.jpg"
+            "specie": "Havkat"
         },
         {
-            "specie": "Havtaske",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/havtaske.jpg"
+            "specie": "Havtaske"
         },
         {
-            "specie": "Havørred",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/havoerred.jpg"
+            "specie": "Havørred"
         },
         {
-            "specie": "Havål",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/havaal.jpg"
+            "specie": "Havål"
         },
         {
-            "specie": "Helleflynder",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/helleflynder.jpg"
+            "specie": "Helleflynder"
         },
         {
-            "specie": "Hestemakrel",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/hestemakrel.jpg"
+            "specie": "Hestemakrel"
         },
         {
-            "specie": "Hornfisk",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/hornfisk.jpg"
+            "specie": "Hornfisk"
         },
         {
-            "specie": "Karpe",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/karpe.jpg"
+            "specie": "Karpe"
         },
         {
-            "specie": "Ising",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/ising.jpg"
+            "specie": "Ising"
         },
         {
-            "specie": "Skrubbe",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/skrubbe.jpg"
+            "specie": "Skrubbe"
         },
         {
-            "specie": "Steelhead",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/steelhead.jpg"
+            "specie": "Steelhead"
         },
         {
-            "specie": "Helt",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/helt.jpg"
+            "specie": "Helt"
         },
         {
-            "specie": "Søørred",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/baekoerred.jpg"
+            "specie": "Søørred"
         },
         {
-            "specie": "Rudskalle",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/rudskalle.jpg"
+            "specie": "Rudskalle"
         },
         {
-            "specie": "Hork",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/hork.jpg"
+            "specie": "Hork"
         },
         {
-            "specie": "Kildeørred",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/kildeoerred.jpg"
+            "specie": "Kildeørred"
         },
         {
-            "specie": "Knude",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/knude.jpg"
+            "specie": "Knude"
         },
         {
-            "specie": "Kuller",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/kuller.jpg"
+            "specie": "Kuller"
         },
         {
-            "specie": "Laks",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/laks.jpg"
+            "specie": "Laks"
         },
         {
-            "specie": "Makrel",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/makrel.jpg"
+            "specie": "Makrel"
         },
         {
-            "specie": "Multe",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/multe.jpg"
+            "specie": "Multe"
         },
         {
-            "specie": "Pighvarre",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/pighvarre.jpg"
+            "specie": "Pighvarre"
         },
         {
-            "specie": "Regnbueørred",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/regnbueoerred.jpg"
+            "specie": "Regnbueørred"
         },
         {
-            "specie": "Rødspætte",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/roedspaette.jpg"
+            "specie": "Rødspætte"
         },
         {
-            "specie": "Sandart",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/sandart.jpg"
+            "specie": "Sandart"
         },
         {
-            "specie": "Sej",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/sej.jpg"
+            "specie": "Sej"
         },
         {
-            "specie": "Sild",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/sild.jpg"
+            "specie": "Sild"
         },
         {
-            "specie": "Skalle",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/skalle.jpg"
+            "specie": "Skalle"
         },
         {
-            "specie": "Ål",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/aal.jpg"
+            "specie": "Ål"
         },
         {
-            "specie": "Stenbider",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/stenbider.jpg"
+            "specie": "Stenbider"
         },
         {
-            "specie": "Suder",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/suder.jpg"
+            "specie": "Suder"
         },
         {
-            "specie": "Torsk",
-            "image": "http://lystfiskeri.dk/images/feed/fisk/torsk.jpg"
+            "specie": "Torsk"
         }
     ]
 }

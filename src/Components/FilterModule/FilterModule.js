@@ -64,10 +64,9 @@ export const FilterModule = (props) => {
   return (
     <PopUp onClose={props.onClose}>
       <div className={css.Headline}>
-        {" "}
-        <h4> {menuTitel} </h4>{" "}
+        <h4> {menuTitel} </h4>
       </div>
-      <div className={css.FilterContainer}>
+      <div className={` ${css.FilterContainer} ${css[menuTitel.replace(/\s/g, "")]}`}>
         {filterTypes.map((filter) => {
           return (
             <div
@@ -76,7 +75,7 @@ export const FilterModule = (props) => {
               onClick={() => toggleSelected(filter.specie)}
             >
               <text> {filter.specie} </text>
-              <img src={filter.image} alt="" />
+              <img className={`${css[filter.specie]}`} src={require("../../images/FilterImages/" + filter.specie.toUpperCase() + ".png").default} />
             </div>
           );
         })}
