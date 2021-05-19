@@ -1,0 +1,33 @@
+.PopUpContainer {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+}
+
+.ButtonContainer {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  /* background-color: aqua; */
+  left: 50%;
+  width: 380px;
+  z-index: 501;
+  margin-left: -190px;
+  margin-top: 10px;
+}
+
+.Icon_Next {
+  height: 40px;
+  -webkit-filter: invert(1);
+}
+
+.Icon_Flipped {
+  transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+}
+
+.Invisible {
+  display: none;
+}

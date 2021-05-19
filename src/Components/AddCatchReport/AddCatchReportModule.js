@@ -19,7 +19,7 @@ export const AddCatchReportModule = (props) => {
   const [fishingSpotChosen, setFishingSpotChosen] = useState(null);
 
   function handlePhotoClick() {
-    alert("add photo");
+    alert("add photo - mangler implementation");
   }
 
   function handlefishingSpotClick() {

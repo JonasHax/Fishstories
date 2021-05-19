@@ -29,9 +29,11 @@ const Fiskekort = (props) => {
   const [filterOptionsSpotType, setFilterOptionsSpotType] = useState([]);
   const [filterOptionsSpecies, setFilterOptionsSpecies] = useState([]);
 
+  const [currentConnectedCatches, setCurrentConnectedCatches] = useState([]);
+
   // Initial Data from API
   const initialFishingSpots = props.fishingSpots;
-  const allCatchReports = props.catchReports;
+  // const allCatchReports = props.catchReports;
   const catchReportsDisplayArray = props.standAloneCatches;
   const connectedCatchReports = props.connectedCatches;
 
@@ -97,6 +99,16 @@ const Fiskekort = (props) => {
     setFilterOptionsSpotType(selectedTypes);
   };
 
+  const connectCatchesToCurrentSpot = (spot) => {
+    const results = [];
+    connectedCatchReports.forEach((report) => {
+      if (report.location_Id === spot.stringId) {
+        results.push(report);
+      }
+    });
+    setCurrentConnectedCatches(results);
+  };
+
   return (
     <div>
       <MapContainer
@@ -145,6 +157,7 @@ const Fiskekort = (props) => {
               eventHandlers={{
                 click: () => {
                   setCurrentSpot(spot);
+                  connectCatchesToCurrentSpot(spot);
                   handleFishingSpotModalShow();
                 },
               }}
@@ -178,6 +191,7 @@ const Fiskekort = (props) => {
           <FishingSpotModule
             chosenSpot={currentSpot}
             onClose={handleFishingSpotModalClose}
+            connectedCatches={currentConnectedCatches}
           />
         </Modal>
 
