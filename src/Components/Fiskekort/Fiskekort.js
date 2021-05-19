@@ -31,7 +31,9 @@ const Fiskekort = (props) => {
 
   // Initial Data from API
   const initialFishingSpots = props.fishingSpots;
-  const initialCatchReports = props.catchReports;
+  const allCatchReports = props.catchReports;
+  const catchReportsDisplayArray = props.standAloneCatches;
+  const connectedCatchReports = props.connectedCatches;
 
   // Display arrays (arrays that are shown on the map and can be changed)
   const [fishingSpotsDisplayArray, setFishingSpotsDisplayArray] = useState([]);
@@ -151,7 +153,7 @@ const Fiskekort = (props) => {
         })}
 
         {/* Catches */}
-        {initialCatchReports.map((report) => {
+        {catchReportsDisplayArray.map((report) => {
           return (
             <Marker
               position={[report.gps.lat, report.gps.lng]}
