@@ -3,10 +3,6 @@ import css from "./FilterButton.module.css";
 import { FilterButton } from "./FilterButton";
 import { Modal } from "@material-ui/core";
 import { FilterModule } from "../FilterModule/FilterModule";
-import Coast from "../../images/fishingSpotType_Coast.png";
-import River from "../../images/fishingSpotType_River.png";
-import PutAndTake from "../../images/fishingSpotType_PutAndTake.png";
-import Lake from "../../images/fishingSpotType_Lake.png";
 import FilterButton_Species from "../../images/havørred.png";
 import FilterButton_Spots from "../../images/filterbutton_lake.png";
 
@@ -50,19 +46,19 @@ export const FilterMenu = (props) => {
           filterTypes={[
             {
               specie: "Kyst",
-              image: Coast,
+              type: "Spot"
             },
             {
               specie: "Sø",
-              image: Lake,
+              type: "Spot"
             },
             {
               specie: "Å",
-              image: River,
+              type: "Spot"
             },
             {
               specie: "P&T",
-              image: PutAndTake,
+              type: "Spot"
             },
           ]}
           menuTitel={"Vælg fiskesteder"}
