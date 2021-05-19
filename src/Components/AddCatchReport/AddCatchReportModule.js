@@ -47,12 +47,6 @@ export const AddCatchReportModule = (props) => {
       setLength(0.0);
     }
 
-    console.log(description);
-    console.log(caughtFish);
-    console.log(weight);
-    console.log(length);
-    console.log(caughtPosition);
-
     if (checkData()) {
       sendToApi();
     }
@@ -102,6 +96,7 @@ export const AddCatchReportModule = (props) => {
       },
       body: JSON.stringify({
         location: useFishingSpot ? fishingSpotChosen.name : "Ikke angivet",
+        location_id: useFishingSpot ? fishingSpotChosen.stringId : null,
         description: description,
         fishType: caughtFish,
         length: length,
