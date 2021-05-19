@@ -11,7 +11,6 @@ import { Modal } from "@material-ui/core";
 import { CatchReportView } from "../CatchReport/CatchReportView";
 import { FishstoriesModule } from "./FishstoriesModule";
 import { ToastContainer, toast } from "react-toastify";
-import { nextButton } from "../../images/fishstories_next.png";
 
 export const FishingSpotModule = (props) => {
   const fishingSpot = props.chosenSpot;
