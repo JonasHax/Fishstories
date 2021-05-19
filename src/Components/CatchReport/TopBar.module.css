@@ -1,17 +1,17 @@
 .TopBarContainer {
   position: absolute;
-  padding-top: 15px;
-  padding-left: 10px;
+  top: 6px;
+  left: 6px;
   font-size: large;
 }
 
-.Location {
+/* .Location {
   background-color: white;
   color: blue;
   border-radius: 25px;
   display: inline;
   padding: 0.3vh 1vh;
-}
+} */
 
 .LocationIcon {
   height: 15px;
@@ -19,4 +19,14 @@
 
 .DropShadow {
   filter: drop-shadow(10px 10px 4px #0000007e);
+}
+
+.Location_Alt {
+  width: 100%;
+
+  /* make text not selecteable */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }

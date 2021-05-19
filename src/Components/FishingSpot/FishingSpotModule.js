@@ -30,7 +30,7 @@ export const FishingSpotModule = (props) => {
   return (
     <PopUp onClose={props.onClose}>
       <div className={css.FishingSpot_CoverImage}>
-        <Location location={fishingSpot.name}></Location>
+        <Location location={fishingSpot.name} className={"absolute"}></Location>
         <div
           className={css.FishingSpot_StoryButton}
           onClick={handleStoriesClicked}
