@@ -1,133 +1,176 @@
 {
     "fish": [
         {
-            "specie": "Aborre"
+            "specie": "Aborre",
+            "type": "Fish"
         },
         {
-            "specie": "Brasen"
+            "specie": "Brasen",
+            "type": "Fish"
         },
         {
-            "specie": "Bækørred"
+            "specie": "Bækørred",
+            "type": "Fish"
         },
         {
-            "specie": "Brosme"
+            "specie": "Brosme",
+            "type": "Fish"
         },
         {
-            "specie": "Døbel"
+            "specie": "Døbel",
+            "type": "Fish"
         },
         {
-            "specie": "Fjeldørred"
+            "specie": "Fjeldørred",
+            "type": "Fish"
         },
         {
-            "specie": "Fjæsing"
+            "specie": "Fjæsing",
+            "type": "Fish"
         },
         {
-            "specie": "Hvilling"
+            "specie": "Hvilling",
+            "type": "Fish"
         },
         {
-            "specie": "Karusse"
+            "specie": "Karusse",
+            "type": "Fish"
         },
         {
-            "specie": "Hellefisk"
+            "specie": "Hellefisk",
+            "type": "Fish"
         },
         {
-            "specie": "Gedde"
+            "specie": "Gedde",
+            "type": "Fish"
         },
         {
-            "specie": "Havkat"
+            "specie": "Havkat",
+            "type": "Fish"
         },
         {
-            "specie": "Havtaske"
+            "specie": "Havtaske",
+            "type": "Fish"
         },
         {
-            "specie": "Havørred"
+            "specie": "Havørred",
+            "type": "Fish"
         },
         {
-            "specie": "Havål"
+            "specie": "Havål",
+            "type": "Fish"
         },
         {
-            "specie": "Helleflynder"
+            "specie": "Helleflynder",
+            "type": "Fish"
         },
         {
-            "specie": "Hestemakrel"
+            "specie": "Hestemakrel",
+            "type": "Fish"
         },
         {
-            "specie": "Hornfisk"
+            "specie": "Hornfisk",
+            "type": "Fish"
         },
         {
-            "specie": "Karpe"
+            "specie": "Karpe",
+            "type": "Fish"
         },
         {
-            "specie": "Ising"
+            "specie": "Ising",
+            "type": "Fish"
         },
         {
-            "specie": "Skrubbe"
+            "specie": "Skrubbe",
+            "type": "Fish"
         },
         {
-            "specie": "Steelhead"
+            "specie": "Steelhead",
+            "type": "Fish"
         },
         {
-            "specie": "Helt"
+            "specie": "Helt",
+            "type": "Fish"
         },
         {
-            "specie": "Søørred"
+            "specie": "Søørred",
+            "type": "Fish"
         },
         {
-            "specie": "Rudskalle"
+            "specie": "Rudskalle",
+            "type": "Fish"
         },
         {
-            "specie": "Hork"
+            "specie": "Hork",
+            "type": "Fish"
         },
         {
-            "specie": "Kildeørred"
+            "specie": "Kildeørred",
+            "type": "Fish"
         },
         {
-            "specie": "Knude"
+            "specie": "Knude",
+            "type": "Fish"
         },
         {
-            "specie": "Kuller"
+            "specie": "Kuller",
+            "type": "Fish"
         },
         {
-            "specie": "Laks"
+            "specie": "Laks",
+            "type": "Fish"
         },
         {
-            "specie": "Makrel"
+            "specie": "Makrel",
+            "type": "Fish"
         },
         {
-            "specie": "Multe"
+            "specie": "Multe",
+            "type": "Fish"
         },
         {
-            "specie": "Pighvarre"
+            "specie": "Pighvarre",
+            "type": "Fish"
         },
         {
-            "specie": "Regnbueørred"
+            "specie": "Regnbueørred",
+            "type": "Fish"
         },
         {
-            "specie": "Rødspætte"
+            "specie": "Rødspætte",
+            "type": "Fish"
         },
         {
-            "specie": "Sandart"
+            "specie": "Sandart",
+            "type": "Fish"
         },
         {
-            "specie": "Sej"
+            "specie": "Sej",
+            "type": "Fish"
         },
         {
-            "specie": "Sild"
+            "specie": "Sild",
+            "type": "Fish"
         },
         {
-            "specie": "Skalle"
+            "specie": "Skalle",
+            "type": "Fish"
         },
         {
-            "specie": "Ål"
+            "specie": "Ål",
+            "type": "Fish"
         },
         {
-            "specie": "Stenbider"
+            "specie": "Stenbider",
+            "type": "Fish"
         },
         {
-            "specie": "Suder"
+            "specie": "Suder",
+            "type": "Fish"
         },
         {
-            "specie": "Torsk"
+            "specie": "Torsk",
+            "type": "Fish"
         }
     ]
 }
