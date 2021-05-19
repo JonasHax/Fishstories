@@ -35,7 +35,7 @@ export const FishingSpotModule = (props) => {
           className={css.FishingSpot_StoryButton}
           onClick={handleStoriesClicked}
         >
-          🐟
+          Fangster 🐟
         </div>
         <img
           className={css.FishingSpot_Image}
