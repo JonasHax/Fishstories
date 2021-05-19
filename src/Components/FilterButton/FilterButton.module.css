@@ -10,7 +10,7 @@
   width: 130px;
   color: white;
   background-color: #ffffff65;
-  border: 2px solid #1ea7fd;
+  border: 2px solid var(--primary-blue);
   z-index: 501;
   margin-left: 10px;
   position: relative;
@@ -26,7 +26,7 @@
 }
 
 .filter_button :active {
-  background-color: blue;
+  background-color: var(--primary-blue);
 }
 
 .filter_img {
@@ -34,14 +34,4 @@
   max-height: 100%;
   pointer-events: none;
   width: 100%;
-}
-
-.AnimatedButton {
-  transition-property: transform, box-shadow;
-  transition-duration: 0.2s;
-  cursor: pointer;
-}
-
-.AnimatedButton:active {
-  transform: scale(0.96);
 }

@@ -7,7 +7,7 @@ export const PopUp = (props) => {
     <Card className={css.Module}>
       <CardContent>
         <div>
-          <div className={css.FishingSpot_CloseButton} onClick={props.onClose}>
+          <div className={` ${css.FishingSpot_CloseButton} ${"AnimatedButton"}`} onClick={props.onClose}>
             ❌
           </div>
           {props.children}
