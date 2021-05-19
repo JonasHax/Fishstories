@@ -45,16 +45,20 @@ export const FilterMenu = (props) => {
           onClose={handleCloseTypes}
           filterTypes={[
             {
-              specie: "Kyst"
+              specie: "Kyst",
+              type: "Spot"
             },
             {
-              specie: "Sø"
+              specie: "Sø",
+              type: "Spot"
             },
             {
-              specie: "Å"
+              specie: "Å",
+              type: "Spot"
             },
             {
-              specie: "PT"
+              specie: "P&T",
+              type: "Spot"
             },
           ]}
           menuTitel={"Vælg fiskesteder"}

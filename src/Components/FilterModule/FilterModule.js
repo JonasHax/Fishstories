@@ -75,7 +75,7 @@ export const FilterModule = (props) => {
               onClick={() => toggleSelected(filter.specie)}
             >
               <text> {filter.specie} </text>
-              <img className={`${css[filter.specie]}`} src={require("../../images/FilterImages/" + filter.specie.toUpperCase() + ".png").default} />
+              <img className={`${css[filter.type]}`} src={require("../../images/FilterImages/" + filter.specie.toUpperCase() + ".png").default} />
             </div>
           );
         })}
