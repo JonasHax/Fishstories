@@ -14,6 +14,7 @@ import {
   fishingSpotIcon_PutAndTake,
   fishingSpotIcon_River,
 } from "./fishingSpotIcons";
+import ChangeView from "./ChangeMapView";
 
 const Fiskekort = (props) => {
   const [fishingSpotModalOpen, setFishingSpotModalOpen] = useState(false);
@@ -29,6 +30,13 @@ const Fiskekort = (props) => {
   const [filterOptionsSpecies, setFilterOptionsSpecies] = useState([]);
 
   const [currentConnectedCatches, setCurrentConnectedCatches] = useState([]);
+
+  // Map positions
+  const defaultPosition = {
+    lat: 56.43213,
+    lng: 9.339407,
+  };
+  const [fetchedPosition, setPosition] = useState();
 
   // Initial Data from API
   const initialFishingSpots = props.fishingSpots;
@@ -89,6 +97,12 @@ const Fiskekort = (props) => {
     }
   }, [initialFishingSpots, spotsLoaded]);
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setPosition([position.coords.latitude, position.coords.longitude]);
+    });
+  }, []);
+
   // More functions
   const handleSpeciesSelected = (selectedSpecies) => {
     setFilterOptionsSpecies(selectedSpecies);
@@ -112,10 +126,11 @@ const Fiskekort = (props) => {
     <div>
       <MapContainer
         className={css.MapCont}
-        center={[57.053777295262705, 9.902697864384805]}
-        zoom={10}
+        center={defaultPosition}
+        zoom={8}
         minZoom={7}
       >
+        <ChangeView center={fetchedPosition} zoom={12}></ChangeView>
         <FilterMenu
           handleSpecies={handleSpeciesSelected}
           handleTypes={handleSpotTypesSelected}
