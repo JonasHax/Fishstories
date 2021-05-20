@@ -8,7 +8,6 @@
   position: absolute;
   display: flex;
   justify-content: space-evenly;
-  /* background-color: aqua; */
   left: 50%;
   width: 380px;
   z-index: 501;
