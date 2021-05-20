@@ -1,18 +1,5 @@
-import React, {
-  useState,
-  updateState,
-  useRef,
-  useMemo,
-  useCallback,
-} from "react";
-import {
-  LayersControl,
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-} from "react-leaflet";
-import { heatLayer, Icon, LayerGroup, Tooltip } from "leaflet";
+import React, { useState, useRef, useMemo } from "react";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import css from "./createFishingSpot.module.css";
 import {
   Input,
@@ -78,11 +65,6 @@ export const CreateFishingSpotPage = () => {
   }
 
   const handleClick = () => {
-    // console.log(position.lat + " - " + position.lng);
-    // console.log(title);
-    // console.log(description);
-    // console.log(type);
-    // console.log(possibleCatches);
     sendToApi();
     clearStuff();
   };

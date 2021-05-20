@@ -1,8 +1,7 @@
 import "./App.css";
 import { FiskekortAPIHandler } from "./Components/Fiskekort/FiskekortAPIHandler";
-import { CatchReportView } from "./Components/CatchReport/CatchReportView";
 import { CreateFishingSpotPage } from "./Components/CreateFishingSpot/CreateFishingSpotPage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { PopUp } from "../PopUpModule/PopUpModule";
 import css from "./FilterModule.module.css";
 
@@ -66,7 +66,11 @@ export const FilterModule = (props) => {
       <div className={css.Headline}>
         <h4> {menuTitel} </h4>
       </div>
-      <div className={` ${css.FilterContainer} ${css[menuTitel.replace(/\s/g, "")]}`}>
+      <div
+        className={` ${css.FilterContainer} ${
+          css[menuTitel.replace(/\s/g, "")]
+        }`}
+      >
         {filterTypes.map((filter) => {
           return (
             <div
@@ -75,7 +79,15 @@ export const FilterModule = (props) => {
               onClick={() => toggleSelected(filter.specie)}
             >
               <text> {filter.specie} </text>
-              <img className={`${css[filter.type]}`} src={require("../../images/FilterImages/" + filter.specie.toUpperCase() + ".png").default} />
+              <img
+                className={`${css[filter.type]}`}
+                src={
+                  require("../../images/FilterImages/" +
+                    filter.specie.toUpperCase() +
+                    ".png").default
+                }
+                alt={"specie"}
+              />
             </div>
           );
         })}

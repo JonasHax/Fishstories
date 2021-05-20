@@ -8,7 +8,6 @@ import defaultLake from "../../images/fishingSpotType_Lake.png";
 import defaultPutAndTake from "../../images/fishingSpotType_PutAndTake.png";
 import defaultRiver from "../../images/fishingSpotType_River.png";
 import { Modal } from "@material-ui/core";
-import { CatchReportView } from "../CatchReport/CatchReportView";
 import { FishstoriesModule } from "./FishstoriesModule";
 import { ToastContainer, toast } from "react-toastify";
 

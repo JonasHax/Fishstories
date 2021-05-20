@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { cssTransition } from "react-toastify";
 import { CatchReportView } from "../CatchReport/CatchReportView";
-import { PopUp } from "../PopUpModule/PopUpModule";
 import css from "./Fishstories.module.css";
 import nextButton from "../../images/fishstories_next.png";
 

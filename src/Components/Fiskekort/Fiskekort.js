@@ -3,7 +3,6 @@ import { FishingSpotModule } from "../FishingSpot/FishingSpotModule";
 import { LayersControl, MapContainer, Marker, TileLayer } from "react-leaflet";
 import css from "./Fiskekort.module.css";
 import "./globals.css";
-import L from "leaflet";
 import { CatchReportView } from "../CatchReport/CatchReportView";
 import { Modal } from "@material-ui/core";
 import { FilterMenu } from "../FilterButton/FilterMenu";

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./PopUpModule.module.css";
 import { Card, CardContent } from "@material-ui/core";
 
