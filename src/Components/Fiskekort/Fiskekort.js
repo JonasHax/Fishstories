@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { FishingSpotModule } from "../FishingSpot/FishingSpotModule";
-import { LayersControl, MapContainer, Marker, TileLayer } from "react-leaflet";
+import {
+  LayersControl,
+  MapContainer,
+  Marker,
+  TileLayer,
+  Tooltip,
+} from "react-leaflet";
 import css from "./Fiskekort.module.css";
 import "./globals.css";
 import { CatchReportView } from "../CatchReport/CatchReportView";
@@ -138,6 +144,11 @@ const Fiskekort = (props) => {
           center={positionLoaded ? undefined : fetchedPosition}
           zoom={12}
         ></ChangeView>
+        {positionLoaded ? (
+          <Marker position={fetchedPosition}>
+            <Tooltip opacity={0.8}>Du er her</Tooltip>
+          </Marker>
+        ) : null}
         <FilterMenu
           handleSpecies={handleSpeciesSelected}
           handleTypes={handleSpotTypesSelected}
