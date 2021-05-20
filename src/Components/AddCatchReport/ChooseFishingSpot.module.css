@@ -1,0 +1,33 @@
+.Container {
+  position: absolute;
+  height: 350px;
+  width: 300px;
+  background-color: rgb(228, 228, 228);
+  top: 10%;
+  left: 10%;
+  border-radius: 5%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.ListContainer {
+  /* position: absolute;
+  top: 20%; */
+  max-height: 230px;
+  overflow: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(211, 211, 211);
+}
+
+.ButtonContainer {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.SearchContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}

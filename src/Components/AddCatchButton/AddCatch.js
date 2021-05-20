@@ -4,7 +4,7 @@ import logo from "../../images/fishAdd.png";
 import { AddCatchReportModule } from "../AddCatchReport/AddCatchReportModule";
 import { Modal } from "@material-ui/core";
 
-export const AddCatchButton = () => {
+export const AddCatchButton = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const handleClose = () => setModalOpen(false);
   const handleShow = () => setModalOpen(true);
@@ -22,7 +22,10 @@ export const AddCatchButton = () => {
         <img className={css.add_img} src={logo} alt=""></img>
       </button>
       <Modal open={modalOpen} onClose={handleClose}>
-        <AddCatchReportModule onClose={handleClose}></AddCatchReportModule>
+        <AddCatchReportModule
+          onClose={handleClose}
+          spots={props.spots}
+        ></AddCatchReportModule>
       </Modal>
     </div>
   );

@@ -3,7 +3,6 @@ import { FishingSpotModule } from "../FishingSpot/FishingSpotModule";
 import { LayersControl, MapContainer, Marker, TileLayer } from "react-leaflet";
 import css from "./Fiskekort.module.css";
 import "./globals.css";
-import L from "leaflet";
 import { CatchReportView } from "../CatchReport/CatchReportView";
 import { Modal } from "@material-ui/core";
 import { FilterMenu } from "../FilterButton/FilterMenu";
@@ -29,9 +28,13 @@ const Fiskekort = (props) => {
   const [filterOptionsSpotType, setFilterOptionsSpotType] = useState([]);
   const [filterOptionsSpecies, setFilterOptionsSpecies] = useState([]);
 
+  const [currentConnectedCatches, setCurrentConnectedCatches] = useState([]);
+
   // Initial Data from API
   const initialFishingSpots = props.fishingSpots;
-  const initialCatchReports = props.catchReports;
+  // const allCatchReports = props.catchReports;
+  const catchReportsDisplayArray = props.standAloneCatches;
+  const connectedCatchReports = props.connectedCatches;
 
   // Display arrays (arrays that are shown on the map and can be changed)
   const [fishingSpotsDisplayArray, setFishingSpotsDisplayArray] = useState([]);
@@ -95,6 +98,16 @@ const Fiskekort = (props) => {
     setFilterOptionsSpotType(selectedTypes);
   };
 
+  const connectCatchesToCurrentSpot = (spot) => {
+    const results = [];
+    connectedCatchReports.forEach((report) => {
+      if (report.location_Id === spot.stringId) {
+        results.push(report);
+      }
+    });
+    setCurrentConnectedCatches(results);
+  };
+
   return (
     <div>
       <MapContainer
@@ -109,7 +122,7 @@ const Fiskekort = (props) => {
           selectedOptionsSpecies={filterOptionsSpecies}
           selectedOptionsTypes={filterOptionsSpotType}
         />
-        <AddCatchButton />
+        <AddCatchButton spots={initialFishingSpots} />
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Streetview">
             <TileLayer
@@ -143,6 +156,7 @@ const Fiskekort = (props) => {
               eventHandlers={{
                 click: () => {
                   setCurrentSpot(spot);
+                  connectCatchesToCurrentSpot(spot);
                   handleFishingSpotModalShow();
                 },
               }}
@@ -151,7 +165,7 @@ const Fiskekort = (props) => {
         })}
 
         {/* Catches */}
-        {initialCatchReports.map((report) => {
+        {catchReportsDisplayArray.map((report) => {
           return (
             <Marker
               position={[report.gps.lat, report.gps.lng]}
@@ -176,6 +190,7 @@ const Fiskekort = (props) => {
           <FishingSpotModule
             chosenSpot={currentSpot}
             onClose={handleFishingSpotModalClose}
+            connectedCatches={currentConnectedCatches}
           />
         </Modal>
 
