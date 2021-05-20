@@ -5,6 +5,7 @@ import AddPhoto from "../../images/addphoto.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ChooseFishingSpot } from "./ChooseFishingSpot";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 
 export const AddCatchReportModule = (props) => {
   const species = require("../../Data/fishTypes.json");
@@ -142,16 +143,14 @@ export const AddCatchReportModule = (props) => {
 
   return (
     <PopUp onClose={props.onClose}>
-      <select
-        className={css.DropDown}
-        value={caughtFish}
-        onChange={handleCaughtFishChange}
-      >
-        <option>Vælg Fiskeart</option>
-        {species.fish.map((fish) => {
-          return <option>{fish.specie}</option>;
-        })}
-      </select>
+      <FormControl className={css.DropDown}>
+        <InputLabel>Vælg fiskeart</InputLabel>
+        <Select value={caughtFish} onChange={handleCaughtFishChange}>
+          {species.fish.map((fish) => {
+            return <MenuItem value={fish.specie}>{fish.specie}</MenuItem>;
+          })}
+        </Select>
+      </FormControl>
 
       <div className={css.SpinnerContainer}>
         <div className={css.AutoMargin}>
