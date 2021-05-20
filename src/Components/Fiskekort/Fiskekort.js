@@ -37,6 +37,7 @@ const Fiskekort = (props) => {
     lng: 9.339407,
   };
   const [fetchedPosition, setPosition] = useState();
+  const [positionLoaded, setPositionLoaded] = useState(false);
 
   // Initial Data from API
   const initialFishingSpots = props.fishingSpots;
@@ -98,9 +99,12 @@ const Fiskekort = (props) => {
   }, [initialFishingSpots, spotsLoaded]);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setPosition([position.coords.latitude, position.coords.longitude]);
-    });
+    if (!positionLoaded) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setPosition([position.coords.latitude, position.coords.longitude]);
+        setPositionLoaded(true);
+      });
+    }
   }, []);
 
   // More functions
@@ -130,7 +134,10 @@ const Fiskekort = (props) => {
         zoom={8}
         minZoom={7}
       >
-        <ChangeView center={fetchedPosition} zoom={12}></ChangeView>
+        <ChangeView
+          center={positionLoaded ? undefined : fetchedPosition}
+          zoom={12}
+        ></ChangeView>
         <FilterMenu
           handleSpecies={handleSpeciesSelected}
           handleTypes={handleSpotTypesSelected}
