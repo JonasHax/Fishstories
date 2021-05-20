@@ -16,9 +16,6 @@
   font-size: x-large;
 }
 
-.Weight {
-}
-
 .Lenght:before {
   content: "";
   display: block;

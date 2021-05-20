@@ -31,7 +31,7 @@ export const FishingSpotModule = (props) => {
       <div className={css.FishingSpot_CoverImage}>
         <Location location={fishingSpot.name} className={"absolute"}></Location>
         <div
-          className={css.FishingSpot_StoryButton}
+          className={`${css.FishingSpot_StoryButton} ${"AnimatedButton"}`}
           onClick={handleStoriesClicked}
         >
           Fangster 🐟
