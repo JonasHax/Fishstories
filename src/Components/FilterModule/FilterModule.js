@@ -93,13 +93,13 @@ export const FilterModule = (props) => {
         })}
       </div>
       <button
-        className={`${css.AcceptButton} ${css.AnimatedButton} ${css.NonSelectable}`}
+        className={`${css.AcceptButton} ${"AnimatedButton"} ${css.NonSelectable}`}
         onClick={handletilføjClick}
       >
         ✔ Benyt filtræring
       </button>
       <button
-        className={`${css.Clear_Filter_Button} ${css.AnimatedButton} ${css.NonSelectable}`}
+        className={`${css.Clear_Filter_Button} ${"AnimatedButton"} ${css.NonSelectable}`}
         onClick={() => handleRydClick()}
       >
         ✖ Ryd filtræring

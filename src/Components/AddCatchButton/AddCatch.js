@@ -16,7 +16,7 @@ export const AddCatchButton = (props) => {
   return (
     <div className={css.Container}>
       <button
-        className={[css.add_button, css.AnimatedButton].join(" ")}
+        className={[css.add_button, "AnimatedButton"].join(" ")}
         onClick={handleClick}
       >
         <img className={css.add_img} src={logo} alt=""></img>

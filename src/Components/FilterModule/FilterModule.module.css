@@ -19,7 +19,7 @@
   margin: auto;
   margin-top: 10px;
   border-radius: 0.3em;
-  border: 2px solid #d1d1d1;
+  border: 2px solid var(--outline-grey);
   cursor: pointer;
 
   /* make text not selecteable */
@@ -47,14 +47,14 @@
 
 .Spot {
   width: 100%;
-  height: 100% !important;
-  margin-top: -18px;
+  height: 100%;
+  margin-top: -21px;
   border-radius: 0.2em;
 }
 
 .Pressed {
-  background-color: rgba(88, 101, 216, 1);
-  border: 2px solid rgba(88, 101, 216, 1);
+  background-color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
   color: white;
 }
 
@@ -67,7 +67,7 @@
   top: 40%;
   position: relative;
   margin-left: 10px;
-  color: rgba(88, 101, 216, 1);
+  color: var(--primary-blue);
 }
 
 .Clear_Filter_Button {
@@ -80,7 +80,7 @@
   margin: auto;
   display: block;
   border: 0;
-  background-color: #d1d1d1;
+  background-color: var(--outline-grey);
   color: white;
   float: right;
   margin-right: 10px;
@@ -96,20 +96,10 @@
   margin: auto;
   display: block;
   color: white;
-  background-color: rgba(88, 216, 139, 1);
+  background-color: var(--accept-green);
   border: 0;
   float: left;
   margin-left: 10px;
-}
-
-.AnimatedButton {
-  transition-property: transform, box-shadow;
-  transition-duration: 0.2s;
-  cursor: pointer;
-}
-
-.AnimatedButton:active {
-  transform: scale(0.96);
 }
 
 .NonSelectable {

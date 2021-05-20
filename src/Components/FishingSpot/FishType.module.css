@@ -8,8 +8,8 @@
   border-radius: 0.3em;
   z-index: 2;
 
-  border: 2px solid rgba(88, 101, 216, 1);
+  border: 2px solid var(--primary-blue);
 
-  color: rgba(88, 101, 216, 1);
+  color: var(--primary-blue);
   background-color: white;
 }
