@@ -101,7 +101,7 @@ const Fiskekort = (props) => {
     navigator.geolocation.getCurrentPosition((position) => {
       setPosition([position.coords.latitude, position.coords.longitude]);
     });
-  }, [fetchedPosition]);
+  }, []);
 
   // More functions
   const handleSpeciesSelected = (selectedSpecies) => {
