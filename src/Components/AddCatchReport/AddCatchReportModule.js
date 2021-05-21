@@ -5,7 +5,13 @@ import AddPhoto from "../../images/addphoto.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ChooseFishingSpot } from "./ChooseFishingSpot";
-import { FormControl, InputLabel, MenuItem, Select, makeStyles } from "@material-ui/core";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  makeStyles,
+} from "@material-ui/core";
 
 export const AddCatchReportModule = (props) => {
   const species = require("../../Data/fishTypes.json");
@@ -111,6 +117,7 @@ export const AddCatchReportModule = (props) => {
       .then((data) => {
         console.log(data);
         onSucces();
+        props.onAdd(data, useLocation);
       })
       .catch((err) => {
         console.log(err);
@@ -141,14 +148,13 @@ export const AddCatchReportModule = (props) => {
     setUseLocation(false);
   };
 
-  const useStyles = makeStyles(({
+  const useStyles = makeStyles({
     menuPaper: {
-      maxHeight: 450
-    }
-  }));
+      maxHeight: 450,
+    },
+  });
 
   const classes = useStyles();
-
 
   return (
     <PopUp onClose={props.onClose}>
@@ -157,11 +163,17 @@ export const AddCatchReportModule = (props) => {
       </div>
       <FormControl className={css.DropDown}>
         <InputLabel>Vælg fiskeart</InputLabel>
-        <Select value={caughtFish} onChange={handleCaughtFishChange}
-        MenuProps={{ classes: { paper: classes.menuPaper } }}
+        <Select
+          value={caughtFish}
+          onChange={handleCaughtFishChange}
+          MenuProps={{ classes: { paper: classes.menuPaper } }}
         >
-          {species.fish.map((fish) => {
-            return <MenuItem value={fish.specie}>{fish.specie}</MenuItem>;
+          {species.fish.map((fish, index) => {
+            return (
+              <MenuItem value={fish.specie} key={index}>
+                {fish.specie}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>
