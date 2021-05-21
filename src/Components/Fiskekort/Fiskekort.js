@@ -6,6 +6,7 @@ import {
   Marker,
   TileLayer,
   Tooltip,
+  ZoomControl,
 } from "react-leaflet";
 import css from "./Fiskekort.module.css";
 import "./globals.css";
@@ -170,6 +171,7 @@ const Fiskekort = (props) => {
         center={defaultPosition}
         zoom={8}
         minZoom={7}
+        zoomControl={false}
       >
         <ChangeView
           center={positionLoaded ? undefined : fetchedPosition}
@@ -201,6 +203,7 @@ const Fiskekort = (props) => {
             />
           </LayersControl.BaseLayer>
         </LayersControl>
+        <ZoomControl position="topright" />
 
         {/* Markers */}
         {fishingSpotsDisplayArray.map((spot, index) => {
