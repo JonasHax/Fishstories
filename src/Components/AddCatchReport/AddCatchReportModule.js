@@ -111,6 +111,7 @@ export const AddCatchReportModule = (props) => {
       .then((data) => {
         console.log(data);
         onSucces();
+        props.onAdd(data, useLocation);
       })
       .catch((err) => {
         console.log(err);

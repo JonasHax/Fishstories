@@ -23,6 +23,7 @@ import {
 import ChangeView from "./ChangeMapView";
 
 const Fiskekort = (props) => {
+  // Hooks for handling state of modals
   const [fishingSpotModalOpen, setFishingSpotModalOpen] = useState(false);
   const [currentSpot, setCurrentSpot] = useState([]);
   const handleFishingSpotModalClose = () => setFishingSpotModalOpen(false);
@@ -31,11 +32,11 @@ const Fiskekort = (props) => {
   const [currentReport, setCurrentReport] = useState([]);
   const handleCatchReportModalClose = () => setCatchReportModalOpen(false);
   const handleCatchReportModalShow = () => setCatchReportModalOpen(true);
-  const [spotsLoaded, setSpotsLoaded] = useState(false);
+  const [currentConnectedCatches, setCurrentConnectedCatches] = useState([]);
+
+  // Hooks for handling filtration
   const [filterOptionsSpotType, setFilterOptionsSpotType] = useState([]);
   const [filterOptionsSpecies, setFilterOptionsSpecies] = useState([]);
-
-  const [currentConnectedCatches, setCurrentConnectedCatches] = useState([]);
 
   // Map positions
   const defaultPosition = {
@@ -47,14 +48,18 @@ const Fiskekort = (props) => {
 
   // Initial Data from API
   const initialFishingSpots = props.fishingSpots;
-  // const allCatchReports = props.catchReports;
-  const catchReportsDisplayArray = props.standAloneCatches;
-  const connectedCatchReports = props.connectedCatches;
+  const initialStandAloneCatchReports = props.standAloneCatches;
+  const initialConnectedCatchReports = props.connectedCatches;
 
   // Display arrays (arrays that are shown on the map and can be changed)
   const [fishingSpotsDisplayArray, setFishingSpotsDisplayArray] = useState([]);
+  const [spotsLoaded, setSpotsLoaded] = useState(false);
+  const [catchReportsDisplayArray, setCatchReportsDisplayArray] = useState([]);
+  const [catchesLoaded, setCatchesLoaded] = useState(false);
+  const [connectedCatches, setConnectedCatches] = useState([]);
+  const [connectedCatchesLoaded, setConnectedCatchesLoaded] = useState(false);
 
-  // Filter functions
+  // Filter function
   const FilterDisplayArray = (type, species) => {
     const filteredArray = [];
     if (species.length === 0 && type.length === 0) {
@@ -96,7 +101,7 @@ const Fiskekort = (props) => {
     FilterDisplayArray(filterOptionsSpotType, filterOptionsSpecies);
   }, [filterOptionsSpotType, filterOptionsSpecies]);
 
-  // Effect for loading the display array with the data from the API when it's fetched
+  // Effect for loading the display array (spots) with the data from the API when it's fetched
   useEffect(() => {
     if (initialFishingSpots.length > 0 && !spotsLoaded) {
       setFishingSpotsDisplayArray(initialFishingSpots);
@@ -104,6 +109,23 @@ const Fiskekort = (props) => {
     }
   }, [initialFishingSpots, spotsLoaded]);
 
+  // Effect for loading the display array (catches - standalone) with the data from the API when it's fetched
+  useEffect(() => {
+    if (initialStandAloneCatchReports.length > 0 && !catchesLoaded) {
+      setCatchReportsDisplayArray(initialStandAloneCatchReports);
+      setCatchesLoaded(true);
+    }
+  }, [initialStandAloneCatchReports, catchesLoaded]);
+
+  // Effect for loading the display array (catches - connected) with the data from the API when it's fetched
+  useEffect(() => {
+    if (initialConnectedCatchReports.length > 0 && !connectedCatchesLoaded) {
+      setConnectedCatches(initialConnectedCatchReports);
+      setConnectedCatchesLoaded(true);
+    }
+  }, [initialConnectedCatchReports, connectedCatchesLoaded]);
+
+  // Effect for getting the geolocation of the device in use
   useEffect(() => {
     if (!positionLoaded) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -113,23 +135,32 @@ const Fiskekort = (props) => {
     }
   }, []);
 
-  // More functions
+  // Filter handlers
   const handleSpeciesSelected = (selectedSpecies) => {
     setFilterOptionsSpecies(selectedSpecies);
   };
-
   const handleSpotTypesSelected = (selectedTypes) => {
     setFilterOptionsSpotType(selectedTypes);
   };
 
+  // On click, connect the reported catches to the fishingspot thats being clicked
   const connectCatchesToCurrentSpot = (spot) => {
     const results = [];
-    connectedCatchReports.forEach((report) => {
+    connectedCatches.forEach((report) => {
       if (report.location_Id === spot.stringId) {
         results.push(report);
       }
     });
     setCurrentConnectedCatches(results);
+  };
+
+  // Update map automatically (locally) on a newly added catchreport
+  const onAddCatchReport = (report, isLocationBased) => {
+    if (isLocationBased) {
+      setCatchReportsDisplayArray([...catchReportsDisplayArray, report]);
+    } else {
+      setConnectedCatches([...connectedCatches, report]);
+    }
   };
 
   return (
@@ -155,7 +186,7 @@ const Fiskekort = (props) => {
           selectedOptionsSpecies={filterOptionsSpecies}
           selectedOptionsTypes={filterOptionsSpotType}
         />
-        <AddCatchButton spots={initialFishingSpots} />
+        <AddCatchButton spots={initialFishingSpots} onAdd={onAddCatchReport} />
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="Streetview">
             <TileLayer

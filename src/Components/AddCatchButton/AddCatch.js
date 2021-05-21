@@ -25,6 +25,7 @@ export const AddCatchButton = (props) => {
         <AddCatchReportModule
           onClose={handleClose}
           spots={props.spots}
+          onAdd={props.onAdd}
         ></AddCatchReportModule>
       </Modal>
     </div>
