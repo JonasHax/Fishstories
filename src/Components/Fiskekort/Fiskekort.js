@@ -146,7 +146,7 @@ const Fiskekort = (props) => {
         ></ChangeView>
         {positionLoaded ? (
           <Marker position={fetchedPosition}>
-            <Tooltip opacity={0.8}>Du er her</Tooltip>
+            <Tooltip opacity={0.75}>Du er her</Tooltip>
           </Marker>
         ) : null}
         <FilterMenu
@@ -172,11 +172,11 @@ const Fiskekort = (props) => {
         </LayersControl>
 
         {/* Markers */}
-        {fishingSpotsDisplayArray.map((spot) => {
+        {fishingSpotsDisplayArray.map((spot, index) => {
           return (
             <Marker
               position={[spot.gps.lat, spot.gps.lng]}
-              key={spot.id}
+              key={index}
               icon={
                 spot.type === "Sø"
                   ? fishingSpotIcon_Lake
@@ -198,11 +198,11 @@ const Fiskekort = (props) => {
         })}
 
         {/* Catches */}
-        {catchReportsDisplayArray.map((report) => {
+        {catchReportsDisplayArray.map((report, index) => {
           return (
             <Marker
               position={[report.gps.lat, report.gps.lng]}
-              key={report.id}
+              key={index}
               icon={catchReportIcon}
               eventHandlers={{
                 click: () => {
