@@ -12,7 +12,6 @@
   background-color: #ffffff65;
   border: 2px solid var(--primary-blue);
   z-index: 501;
-  margin-left: 10px;
   position: relative;
 }
 
