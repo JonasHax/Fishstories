@@ -5,7 +5,7 @@ import AddPhoto from "../../images/addphoto.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ChooseFishingSpot } from "./ChooseFishingSpot";
-import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import { FormControl, InputLabel, MenuItem, Select, makeStyles } from "@material-ui/core";
 
 export const AddCatchReportModule = (props) => {
   const species = require("../../Data/fishTypes.json");
@@ -141,11 +141,25 @@ export const AddCatchReportModule = (props) => {
     setUseLocation(false);
   };
 
+  const useStyles = makeStyles(({
+    menuPaper: {
+      maxHeight: 450
+    }
+  }));
+
+  const classes = useStyles();
+
+
   return (
     <PopUp onClose={props.onClose}>
+      <div className={css.Headline}>
+        <h4> Tilføj fangst </h4>
+      </div>
       <FormControl className={css.DropDown}>
         <InputLabel>Vælg fiskeart</InputLabel>
-        <Select value={caughtFish} onChange={handleCaughtFishChange}>
+        <Select value={caughtFish} onChange={handleCaughtFishChange}
+        MenuProps={{ classes: { paper: classes.menuPaper } }}
+        >
           {species.fish.map((fish) => {
             return <MenuItem value={fish.specie}>{fish.specie}</MenuItem>;
           })}
