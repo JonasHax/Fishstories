@@ -6,9 +6,6 @@
 
 .ButtonContainer {
   position: absolute;
-  /* display: flex;
-  justify-content: space-evenly; */
-  /* background-color: aqua; */
 
   display: grid;
   grid-template-columns: 50% 50%;
