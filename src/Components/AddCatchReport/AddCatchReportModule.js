@@ -146,8 +146,12 @@ export const AddCatchReportModule = (props) => {
       <FormControl className={css.DropDown}>
         <InputLabel>Vælg fiskeart</InputLabel>
         <Select value={caughtFish} onChange={handleCaughtFishChange}>
-          {species.fish.map((fish) => {
-            return <MenuItem value={fish.specie}>{fish.specie}</MenuItem>;
+          {species.fish.map((fish, index) => {
+            return (
+              <MenuItem value={fish.specie} key={index}>
+                {fish.specie}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>
