@@ -76,9 +76,7 @@ export const FilterModule = (props) => {
             <div
               className={css.FilterButton}
               id={filter.specie}
-              onClick={() => toggleSelected(filter.specie)}
-            >
-              <text> {filter.specie} </text>
+              onClick={() => toggleSelected(filter.specie)}>
               <img
                 className={`${css[filter.type]}`}
                 src={
@@ -88,6 +86,7 @@ export const FilterModule = (props) => {
                 }
                 alt={"specie"}
               />
+              <text> {filter.specie} </text>
             </div>
           );
         })}
