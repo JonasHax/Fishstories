@@ -6,8 +6,10 @@
 
 .ButtonContainer {
   position: absolute;
-  display: flex;
-  justify-content: space-evenly;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: -20%;
   left: 50%;
   width: 380px;
   z-index: 501;
@@ -17,7 +19,11 @@
 
 .Icon_Next {
   height: 40px;
+  width: 40px;
   -webkit-filter: invert(1);
+  display: block;
+  margin: auto;
+  margin-left: 50px;
 }
 
 .Icon_Flipped {
@@ -25,6 +31,7 @@
   -moz-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   -ms-transform: scaleX(-1);
+  margin-left: 100px;
 }
 
 .Invisible {
