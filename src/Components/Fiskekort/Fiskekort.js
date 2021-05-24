@@ -22,6 +22,7 @@ import {
   fishingSpotIcon_River,
 } from "./fishingSpotIcons";
 import ChangeView from "./ChangeMapView";
+import { FilterDisplayArray } from "./FilterFunction";
 
 const Fiskekort = (props) => {
   // Hooks for handling state of modals
@@ -60,46 +61,14 @@ const Fiskekort = (props) => {
   const [connectedCatches, setConnectedCatches] = useState([]);
   const [connectedCatchesLoaded, setConnectedCatchesLoaded] = useState(false);
 
-  // Filter function
-  const FilterDisplayArray = (type, species) => {
-    const filteredArray = [];
-    if (species.length === 0 && type.length === 0) {
-      setFishingSpotsDisplayArray(initialFishingSpots);
-    } else if (species.length === 0 && type.length !== 0) {
-      initialFishingSpots.forEach((spot) => {
-        type.forEach((type) => {
-          if (spot.type === type) {
-            filteredArray.push(spot);
-          }
-        });
-        setFishingSpotsDisplayArray(filteredArray);
-      });
-    } else if (species.length !== 0 && type.length === 0) {
-      initialFishingSpots.forEach((spot) => {
-        species.forEach((specie) => {
-          if (spot.fishTypes.includes(specie)) {
-            filteredArray.push(spot);
-          }
-        });
-      });
-      setFishingSpotsDisplayArray(filteredArray);
-    } else {
-      initialFishingSpots.forEach((spot) => {
-        type.forEach((type) => {
-          species.forEach((specie) => {
-            if (spot.type === type && spot.fishTypes.includes(specie)) {
-              filteredArray.push(spot);
-            }
-          });
-        });
-      });
-      setFishingSpotsDisplayArray(filteredArray);
-    }
-  };
-
   // Effect for filtering the displayarray each time filteroptions are changed
   useEffect(() => {
-    FilterDisplayArray(filterOptionsSpotType, filterOptionsSpecies);
+    let filteredArray = FilterDisplayArray(
+      filterOptionsSpotType,
+      filterOptionsSpecies,
+      initialFishingSpots
+    );
+    setFishingSpotsDisplayArray(filteredArray);
   }, [filterOptionsSpotType, filterOptionsSpecies]);
 
   // Effect for loading the display array (spots) with the data from the API when it's fetched
