@@ -3,6 +3,7 @@ import { PopUp } from "../PopUpModule/PopUpModule";
 import { BottomBar } from "./BottomBar";
 import css from "./CatchReportView.module.css";
 import { TopBar } from "./TopBar";
+import defaultImage from "../../images/catchreport_default.png";
 
 export const CatchReportView = (props) => {
   return (
@@ -19,11 +20,7 @@ export const CatchReportView = (props) => {
           lenght={props.catchReport.length}
           description={props.catchReport.description}
         ></BottomBar>
-        <img
-          src={"https://pbs.twimg.com/media/CoFG26CUsAAeluU.jpg"}
-          alt=""
-          className={css.CoverImage}
-        ></img>
+        <img src={defaultImage} alt="" className={css.CoverImage}></img>
       </div>
     </PopUp>
   );
