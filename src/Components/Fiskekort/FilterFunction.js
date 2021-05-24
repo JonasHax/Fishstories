@@ -7,7 +7,9 @@ const FilterDisplayArray = (type, species, initialFishingSpots) => {
     initialFishingSpots.forEach((spot) => {
       type.forEach((type) => {
         if (spot.type === type) {
-          filteredArray.push(spot);
+          if (!filteredArray.includes(spot)) {
+            filteredArray.push(spot);
+          }
         }
       });
     });
@@ -16,7 +18,9 @@ const FilterDisplayArray = (type, species, initialFishingSpots) => {
     initialFishingSpots.forEach((spot) => {
       species.forEach((specie) => {
         if (spot.fishTypes.includes(specie)) {
-          filteredArray.push(spot);
+          if (!filteredArray.includes(spot)) {
+            filteredArray.push(spot);
+          }
         }
       });
     });
@@ -26,7 +30,9 @@ const FilterDisplayArray = (type, species, initialFishingSpots) => {
       type.forEach((type) => {
         species.forEach((specie) => {
           if (spot.type === type && spot.fishTypes.includes(specie)) {
-            filteredArray.push(spot);
+            if (!filteredArray.includes(spot)) {
+              filteredArray.push(spot);
+            }
           }
         });
       });
@@ -36,3 +42,4 @@ const FilterDisplayArray = (type, species, initialFishingSpots) => {
 };
 
 export { FilterDisplayArray };
+module.exports = FilterDisplayArray;
