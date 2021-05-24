@@ -1,4 +1,4 @@
-const FilterDisplayArray = require("./FilterFunction");
+const { FilterDisplayArray } = require("./FilterFunction");
 
 // Setup array for all tests to use
 const initialFishingSpots = [

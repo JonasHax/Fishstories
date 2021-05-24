@@ -1,4 +1,4 @@
-const FilterDisplayArray = (type, species, initialFishingSpots) => {
+function FilterDisplayArray(type, species, initialFishingSpots) {
   const filteredArray = [];
 
   if (species.length === 0 && type.length === 0) {
@@ -39,7 +39,6 @@ const FilterDisplayArray = (type, species, initialFishingSpots) => {
     });
     return filteredArray;
   }
-};
+}
 
 export { FilterDisplayArray };
-module.exports = FilterDisplayArray;
