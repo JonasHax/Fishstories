@@ -6,8 +6,12 @@ export const FishType = (props) => {
 
   return (
     <div>
-      {possibleCatches.map((fish) => {
-        return <div className={css.FishType}>🐟 {fish} </div>;
+      {possibleCatches.map((fish, index) => {
+        return (
+          <div className={css.FishType} key={index}>
+            🐟 {fish}{" "}
+          </div>
+        );
       })}
     </div>
   );
