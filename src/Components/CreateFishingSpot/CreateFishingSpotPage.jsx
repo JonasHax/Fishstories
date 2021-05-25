@@ -139,7 +139,7 @@ export const CreateFishingSpotPage = () => {
             <MenuItem value={"P&T"}>P&T</MenuItem>
           </Select>
         </FormControl>
-        <button className={css.grimKnap} onClick={handleClick}>
+        <button className={css.AddButton} onClick={handleClick}>
           Knap til at udføre
         </button>
       </div>

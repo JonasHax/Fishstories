@@ -9,12 +9,8 @@ export const CatchReportView = (props) => {
   return (
     <PopUp onClose={props.onClose}>
       <div className={css.Container}>
-        <TopBar
-          className={css.TopBar}
-          location={props.catchReport.location}
-        ></TopBar>
+        <TopBar location={props.catchReport.location}></TopBar>
         <BottomBar
-          className={css.BottomBar}
           fishType={props.catchReport.fishType}
           weight={props.catchReport.weight}
           lenght={props.catchReport.length}
