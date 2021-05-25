@@ -71,12 +71,14 @@ export const FilterModule = (props) => {
           css[menuTitel.replace(/\s/g, "")]
         }`}
       >
-        {filterTypes.map((filter) => {
+        {filterTypes.map((filter, index) => {
           return (
             <div
               className={css.FilterButton}
               id={filter.specie}
-              onClick={() => toggleSelected(filter.specie)}>
+              key={index}
+              onClick={() => toggleSelected(filter.specie)}
+            >
               <img
                 className={`${css[filter.type]}`}
                 src={
@@ -92,13 +94,17 @@ export const FilterModule = (props) => {
         })}
       </div>
       <button
-        className={`${css.AcceptButton} ${"AnimatedButton"} ${css.NonSelectable}`}
+        className={`${css.AcceptButton} ${"AnimatedButton"} ${
+          css.NonSelectable
+        }`}
         onClick={handletilføjClick}
       >
         ✔ Benyt filtræring
       </button>
       <button
-        className={`${css.Clear_Filter_Button} ${"AnimatedButton"} ${css.NonSelectable}`}
+        className={`${css.Clear_Filter_Button} ${"AnimatedButton"} ${
+          css.NonSelectable
+        }`}
         onClick={() => handleRydClick()}
       >
         ✖ Ryd filtræring
