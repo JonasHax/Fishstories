@@ -19,7 +19,7 @@ export const BottomBar = (props) => {
       ].join(" ")}
       onClick={handleClick}
     >
-      <div className="FishType">
+      <div className={css.FishType}>
         <img src={FishType} alt="Art" className={css.FishIcon}></img>{" "}
         {props.fishType}
       </div>

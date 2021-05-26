@@ -3,7 +3,9 @@ import { PopUp } from "../PopUpModule/PopUpModule";
 import { BottomBar } from "./BottomBar";
 import css from "./CatchReportView.module.css";
 import { TopBar } from "./TopBar";
-import defaultImage from "../../images/catchreport_default.png";
+import defaultImage_havørred from "../../images/catchreport_default2.png";
+import defaultImage_other from "../../images/catchreport_default3.png";
+import defaultImage_other2 from "../../images/catchreport_default1.png";
 
 export const CatchReportView = (props) => {
   return (
@@ -16,7 +18,17 @@ export const CatchReportView = (props) => {
           lenght={props.catchReport.length}
           description={props.catchReport.description}
         ></BottomBar>
-        <img src={defaultImage} alt="" className={css.CoverImage}></img>
+        <img
+          src={
+            props.catchReport.fishType === "Havørred"
+              ? defaultImage_havørred
+              : props.catchReport.fishType === "Gedde"
+              ? defaultImage_other2
+              : defaultImage_other
+          }
+          alt=""
+          className={css.CoverImage}
+        ></img>
       </div>
     </PopUp>
   );
