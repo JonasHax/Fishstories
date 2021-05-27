@@ -34,7 +34,7 @@ export const BottomBar = (props) => {
       <div className={css.Description}>{props.description}</div>
       <div
         className={
-          !toggled && props.description.length > 100 ? css.TextFade : null
+          !toggled && props.description.length > 110 ? css.TextFade : null
         }
       />
     </div>
